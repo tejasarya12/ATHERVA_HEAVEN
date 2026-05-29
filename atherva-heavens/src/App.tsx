@@ -49,7 +49,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black select-none">
+    <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-500 select-none">
       <Navbar />
       <Hero />
       <Services />

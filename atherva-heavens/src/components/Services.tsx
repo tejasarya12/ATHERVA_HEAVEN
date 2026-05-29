@@ -69,10 +69,24 @@ export default function Services() {
       } else {
         // First card starts visible behind the door, full screen
         tl.fromTo(card,
-          { scale: 1, filter: 'blur(30px)', opacity: 1 },
-          { scale: 1, filter: 'blur(0px)', duration: 2, ease: "power2.inOut" }
+          { scale: 0.8, opacity: 0.3 },
+          { scale: 1, opacity: 1, duration: 2, ease: "power3.out" }
         );
         tl.set(inner, { borderRadius: "0px" }, 0);
+
+        // First card text reveal timing correction (starts at 2.0s aligned with entrance)
+        tl.fromTo([title, desc],
+          { y: 150, opacity: 0, filter: 'blur(15px)' },
+          {
+            y: 0,
+            opacity: (_index: number, target: HTMLElement) => target.classList.contains('service-title') ? 0.9 : 0.6,
+            filter: 'blur(0px)',
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "expo.out"
+          },
+          2.0
+        );
       }
 
       // Stay centered
@@ -106,21 +120,8 @@ export default function Services() {
         }, "<");
       }
 
-      // Reveal text with staggered cinematic entrance
-      if (i === 0) {
-        tl.fromTo([title, desc],
-          { y: 150, opacity: 0, filter: 'blur(15px)' },
-          {
-            y: 0,
-            opacity: (_index: number, target: HTMLElement) => target.classList.contains('service-title') ? 0.9 : 0.6,
-            filter: 'blur(0px)',
-            duration: 1.5,
-            stagger: 0.3,
-            ease: "expo.out"
-          },
-          "<0.5"
-        );
-      } else {
+      // Reveal text with staggered cinematic entrance for remaining cards
+      if (i > 0) {
         gsap.fromTo([title, desc],
           { y: 150, opacity: 0, filter: 'blur(15px)' },
           {
@@ -150,8 +151,13 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative min-h-screen bg-black overflow-hidden z-[50]"
+      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 overflow-hidden z-[50]"
     >
+      {/* Section label on top-left of the screen */}
+      <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50 text-xs md:text-sm font-black uppercase tracking-[0.3em] text-white">
+        our services
+      </div>
+
       <div
         ref={containerRef}
         className="relative h-full w-full flex items-center justify-center p-0"
@@ -170,14 +176,15 @@ export default function Services() {
                 muted
                 loop
                 playsInline
+                preload="none"
                 className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] ease-out opacity-100"
               >
                 <source src={service.video} type="video/mp4" />
               </video>
 
               {/* Text Container */}
-              <div className="relative z-10 w-full h-full p-16 md:p-32 flex flex-col justify-center gap-8">
-                <div className="service-title text-6xl md:text-[10vw] font-display font-black tracking-tighter text-white uppercase leading-[0.8] max-w-5xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]" id={`service-title-${index}`}>
+              <div className="relative z-10 w-full h-full p-8 md:p-32 flex flex-col justify-center gap-8">
+                <div className="service-title text-4xl md:text-[10vw] font-display font-black tracking-tighter text-white uppercase leading-[0.8] max-w-5xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]" id={`service-title-${index}`}>
                   {service.title}
                 </div>
                 <div className="service-desc text-lg md:text-2xl font-bold text-white/80 max-w-2xl leading-relaxed uppercase tracking-widest drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]" id={`service-desc-${index}`}>

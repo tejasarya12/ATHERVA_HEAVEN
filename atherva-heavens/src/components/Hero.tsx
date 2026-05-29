@@ -16,9 +16,9 @@ export default function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
 
   const [loaded, setLoaded] = useState(0);
-  const totalFrames = 57;
+  const totalFrames = 74;
   const frames = useRef<HTMLImageElement[]>([]);
-  const ZOOM_FACTOR = 1.35;
+  const ZOOM_FACTOR = 1.0;
 
   // Preload images
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function Hero() {
 
       drawWidth *= ZOOM_FACTOR;
       drawHeight *= ZOOM_FACTOR;
-      offsetX = (canvas.width - drawWidth) / 2 - 16;
+      offsetX = (canvas.width - drawWidth) / 2 - 13.6;
       offsetY = (canvas.height - drawHeight) / 2;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -78,12 +78,13 @@ export default function Hero() {
     const handleResize = () => {
       if (canvasLeftRef.current && canvasRightRef.current) {
         // Both canvases act as full screen canvases
+        const dpr = window.devicePixelRatio || 1;
         const w = window.innerWidth;
         const h = window.innerHeight;
-        canvasLeftRef.current.width = w;
-        canvasLeftRef.current.height = h;
-        canvasRightRef.current.width = w;
-        canvasRightRef.current.height = h;
+        canvasLeftRef.current.width = w * dpr;
+        canvasLeftRef.current.height = h * dpr;
+        canvasRightRef.current.width = w * dpr;
+        canvasRightRef.current.height = h * dpr;
         // Redraw current frame to avoid flicker on resize
         requestAnimationFrame(() => drawFrame(0));
       }
@@ -120,26 +121,20 @@ export default function Hero() {
     // Enforce timeline duration to be exactly 100 for easy percentage mapping
     tl.to({}, { duration: 100 }, 0);
 
-    // Camera Push-in (0% to 60%)
-    // Scale the container to simulate deep push-in
-    tl.to(containerRef.current, {
-      scale: 1.5,
-      duration: 60,
-      ease: "sine.inOut"
-    }, 0);
+
 
     // Door Opening (Starts at 26%, ends at 60% to match visual frames)
     tl.to(leftDoorRef.current, {
       xPercent: -100,
-      duration: 8,
+      duration: 25,
       ease: "power2.inOut"
-    }, 5);
+    }, 26);
 
     tl.to(rightDoorRef.current, {
       xPercent: 100,
-      duration: 8,
+      duration: 25,
       ease: "power2.inOut"
-    }, 5);
+    }, 26);
 
     // Text Fade/Dissolve (starts before door opens)
     tl.to(textRef.current, {
@@ -186,29 +181,27 @@ export default function Hero() {
       <div ref={containerRef} className="absolute inset-0 z-20 flex pointer-events-none will-change-transform">
         <div
           ref={leftDoorRef}
-          className="relative w-1/2 h-full overflow-hidden will-change-transform bg-[#050505]"
+          className="relative w-1/2 h-full overflow-hidden will-change-transform hero-door"
         >
           {/* Canvas is 200vw width to cover full screen, positioned left-0 */}
           <canvas
             ref={canvasLeftRef}
-            className="absolute left-0 top-0 w-[200%] h-full max-w-none will-change-transform"
-            style={{ filter: 'brightness(0.6) contrast(1.1)' }}
+            className="absolute left-0 top-0 w-[200%] h-full max-w-none will-change-transform hero-canvas"
           />
           {/* Symmetrical detail on door edge */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-white/20" />
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-[var(--border-color)] transition-colors duration-500" />
         </div>
         <div
           ref={rightDoorRef}
-          className="relative w-1/2 h-full overflow-hidden will-change-transform bg-[#050505]"
+          className="relative w-1/2 h-full overflow-hidden will-change-transform hero-door"
         >
           {/* Canvas is 200vw width to cover full screen, positioned right-0 */}
           <canvas
             ref={canvasRightRef}
-            className="absolute right-0 top-0 w-[200%] h-full max-w-none will-change-transform"
-            style={{ filter: 'brightness(0.6) contrast(1.1)' }}
+            className="absolute right-0 top-0 w-[200%] h-full max-w-none will-change-transform hero-canvas"
           />
           {/* Symmetrical detail on door edge */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-white/20" />
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-[var(--border-color)] transition-colors duration-500" />
         </div>
       </div>
 
@@ -220,9 +213,9 @@ export default function Hero() {
       {/* Hero Typography */}
       <div
         ref={textRef}
-        className="absolute bottom-12 left-8 z-40 select-none pointer-events-none max-w-[80vw]"
+        className="absolute bottom-8 right-4 md:bottom-12 md:right-8 z-40 select-none pointer-events-none max-w-[80vw] text-right"
       >
-        <h1 className="text-[12vw] font-display font-black leading-[0.75] tracking-[-0.07em] text-white/95 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,1)]" style={{ WebkitFontSmoothing: 'antialiased' }}>
+        <h1 className="text-[20vw] md:text-[12vw] font-display font-black leading-[0.75] tracking-[-0.07em] text-white transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]" style={{ WebkitFontSmoothing: 'antialiased' }}>
           ATHERVA<br />HEAVEN
         </h1>
       </div>
@@ -231,10 +224,10 @@ export default function Hero() {
       <div className="grain-overlay opacity-20 z-50 pointer-events-none" />
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-12 right-12 z-40 flex flex-col items-center gap-4 opacity-30">
-        <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-white">Entry_Protocol</span>
-        <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent" />
-      </div>
+      {/*<div className="absolute bottom-12 right-12 z-40 flex flex-col items-center gap-4 opacity-30">
+        <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-[var(--text-primary)] transition-colors duration-500">Entry_Protocol</span>
+        <div className="w-[1px] h-16 bg-gradient-to-b from-[var(--text-primary)] to-transparent" />
+      </div>*/}
     </section>
   );
 }

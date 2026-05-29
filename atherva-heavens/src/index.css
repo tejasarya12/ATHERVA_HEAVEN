@@ -1,82 +1,119 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Poppins", sans-serif;
-  
+
   --color-accent: #8B0000;
   --color-glass: rgba(255, 255, 255, 0.05);
 }
 
 :root {
-  background-color: #000;
-  color: #fff;
+  --bg-primary: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-inset: rgba(255, 255, 255, 0.6);
+  --card-bg: #fdfdfc;
+  --card-text: #111111;
+  --card-divider: rgba(0, 0, 0, 0.1);
+  --focus-shadow: rgba(255, 255, 255, 0.05);
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html.light {
+  --bg-primary: #fdfdfc;
+  --text-primary: #111111;
+  --text-secondary: rgba(17, 17, 17, 0.6);
+  --border-color: rgba(0, 0, 0, 0.12);
+  --glass-bg: rgba(0, 0, 0, 0.02);
+  --glass-border: rgba(0, 0, 0, 0.15);
+  --glass-inset: rgba(255, 255, 255, 0.8);
+  --card-bg: #0c0c0e;
+  --card-text: #ffffff;
+  --card-divider: rgba(255, 255, 255, 0.1);
+  --focus-shadow: rgba(0, 0, 0, 0.05);
 }
 
 body {
   overflow-x: hidden;
-  background-color: #000;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Glass & Material System */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .liquid-glass {
-  background: rgba(255,255,255,0.01);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 9999px;
+  border: 1.5px solid var(--glass-border);
+  box-shadow: inset 0 2px 2px var(--glass-inset), 0 10px 30px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
+
 .liquid-glass::before {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   border-radius: inherit;
-  padding: 1.4px;
+  padding: 2px;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.45) 0%,
-    rgba(255,255,255,0.15) 20%,
-    rgba(255,255,255,0) 40%,
-    rgba(255,255,255,0) 60%,
-    rgba(255,255,255,0.15) 80%,
-    rgba(255,255,255,0.45) 100%);
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0.6) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
+
 .liquid-glass-strong {
-  background: rgba(255,255,255,0.01);
+  background: rgba(255, 255, 255, 0.01);
   background-blend-mode: luminosity;
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
   border: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
+
 .liquid-glass-strong::before {
   content: "";
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   border-radius: inherit;
   padding: 1.4px;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.5) 0%,
-    rgba(255,255,255,0.2) 20%,
-    rgba(255,255,255,0) 40%,
-    rgba(255,255,255,0) 60%,
-    rgba(255,255,255,0.2) 80%,
-    rgba(255,255,255,0.5) 100%);
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0.5) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -112,9 +149,12 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
   position: relative;
+  transition: filter 0.5s ease;
 }
+
+
 
 .shadowy-text::after {
   content: attr(data-text);
@@ -127,10 +167,103 @@ body {
 }
 
 .lumen-gradient {
-  background: linear-gradient(135deg, #fff 0%, #888 100%);
+  background: linear-gradient(135deg, #a4f4fd 0%, #ff8c00 50%, #9b51e0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.lumen-desc-gradient {
+  background: linear-gradient(120deg, #ff8c42 0%, #ffdf73 30%, #5271ff 70%, #8c52ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hand-draw-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+}
+
+.Atharva-Heaven-footer-text {
+  background: linear-gradient(to right, #091020 0%, #0B2551 25%, #A4F4FD 65%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.liquid-glass-navbar {
+  background: rgba(10, 10, 12, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.liquid-glass-navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.1) 80%,
+      rgba(255, 255, 255, 0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.solid-card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px var(--border-color);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Glowing Sand Animation */
+.particles-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.particles-wrap.active {
+  opacity: 1;
+}
+
+.particle-c {
+  position: absolute;
+  width: 1.2px;
+  height: 1.2px;
+  border-radius: 50%;
+  opacity: var(--p-opacity, 0);
+  box-shadow: 0 0 2px currentColor;
+  transform: rotateZ(calc(-1 * var(--z))) rotateY(var(--y)) translateX(var(--r, 120px)) rotateZ(var(--z));
 }
 
 /* Cursor & Interaction */
@@ -167,7 +300,128 @@ body {
 }
 
 /* Plastic Wrap Grid Border fix */
-#contact-grid > div {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-left: 1px solid rgba(255,255,255,0.08);
+#contact-grid>div {
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  transition: border-color 0.5s ease;
+}
+
+/* Custom Caret Animation */
+@keyframes caret-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-caret-blink {
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* Hero Canvas & Doors Theme Adaptation */
+.hero-canvas {
+  filter: brightness(1.1) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+
+.hero-door {
+  background-color: var(--bg-primary);
+  transition: background-color 0.5s ease;
+}
+
+/* Animated Call Card */
+@keyframes border-shift {
+  0%, 15% { border-color: #ffd60a; }
+  85%, 100% { border-color: #38bdf8; }
+}
+
+@keyframes bg-shift {
+  0%, 15% { background-color: #ffd60a; color: #111111; }
+  85%, 100% { background-color: #38bdf8; color: #111111; }
+}
+
+.animated-call-card {
+  animation: border-shift 5s infinite alternate ease-in-out;
+  border-width: 4px;
+  border-style: solid;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.animated-call-card-bottom {
+  animation: bg-shift 5s infinite alternate ease-in-out;
+}
+
+/* Custom Fonts */
+.bricolage-grotesque {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.darker-grotesque {
+  font-family: "Darker Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.unbounded {
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+.dela-gothic-one-regular {
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.modak-regular {
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.knewave-regular {
+  font-family: "Knewave", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.syne {
+  font-family: "Syne", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.yeseva-one-regular {
+  font-family: "Yeseva One", serif;
+  font-weight: 400;
+  font-style: normal;
 }
