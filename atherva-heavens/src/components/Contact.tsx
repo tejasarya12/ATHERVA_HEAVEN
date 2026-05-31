@@ -157,7 +157,7 @@ export default function Contact() {
             <div>
               <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Location</span>
               <h4 className="text-xl font-medium opacity-87 leading-tight text-[var(--text-primary)] transition-colors duration-500">
-                Jack Lemkus Store,<br/>26 St Georges Mall,<br/>Cape Town
+                  opposit Indian Bank, Veerannana,<br/>7th A Cross Rd, Nagavara,<br/>Bengaluru, Karnataka 560045
               </h4>
             </div>
             <a href="https://www.google.com/maps/dir/?api=1&destination=Atharva+Heaven+Touch+Spa+&+Salon+opposit+Indian+Bank+Veerannana++7th+A+Cross+Rd+Nagavara+Bengaluru+Karnataka+560045" target="_blank" rel="noreferrer" className="w-fit">
@@ -187,10 +187,10 @@ export default function Contact() {
             <div>
               <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Trading Hours</span>
               <div className="space-y-2 text-[11px] opacity-70 uppercase tracking-widest leading-relaxed font-medium text-[var(--text-primary)] transition-all duration-500">
-                <div className="flex justify-between"><span>Monday - Friday:</span> <span>08:45 to 17:00</span></div>
-                <div className="flex justify-between"><span>Saturdays:</span> <span>09:00 to 14:00</span></div>
-                <div className="flex justify-between"><span>Sundays:</span> <span>Closed</span></div>
-                <div className="flex justify-between"><span>Public Holidays:</span> <span>Closed</span></div>
+                <div className="flex justify-between"><span>Monday - Friday:</span> <span>11:00 am to 8:30 pm</span></div>
+                <div className="flex justify-between"><span>Saturdays:</span> <span>10:30 am to 9:00 pm</span></div>
+                <div className="flex justify-between"><span>Sundays:</span> <span>10:30 am to 9:00 pm</span></div>
+                <div className="flex justify-between"><span>Public Holidays:</span> <span>10:30 am to 9:00 pm</span></div>
               </div>
             </div>
           </div>
