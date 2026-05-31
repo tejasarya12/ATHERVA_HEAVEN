@@ -8,25 +8,25 @@ import gsap, { ScrollTrigger, Draggable } from '@/lib/gsap';
 
 const REVIEWS = [
   {
-    quote: "ABSOLUTELY TRANSFORMATIVE",
-    text: "Bogdan was exceptional from start to finish. The final site feels like us: professional, confident, and true to what we do.",
+    quote: "Exceptional Service & Care",
+    text: "From the warm welcome to the professional treatments, Atharva Heaven exceeded my expectations. The staff was attentive, the atmosphere was relaxing, and I left feeling completely refreshed and satisfied.",
     emoji: "✨",
-    user: "Khris",
-    role: "Founder, Agency"
+    user: "Dixit",
+    role: "Daily customer"
   },
   {
-    quote: "FROM GENERIC TO PREMIUM",
-    text: "The difference was clear right away. The new site feels premium, focused, and much more aligned with the level we operate at.",
+    quote: "A Truly Relaxing Experience",
+    text: "The spa services were amazing and helped me unwind after a busy week. The environment was peaceful, and every detail was thoughtfully designed for comfort and relaxation.",
     emoji: "💎",
-    user: "Clara",
-    role: "Founder, Tech Firm"
+    user: "Sujith",
+    role: "Highest paid customer"
   },
   {
-    quote: "A PREMIUM PRESENCE",
-    text: "He helped us move from a generic space to something much more refined and confident. The new design feels premium without trying too hard.",
-    emoji: "🌗",
-    user: "Ariel",
-    role: "Director, Design Studio"
+    quote: "My Favorite Salon & Spa",
+    text: "Atharva Heaven has become my go-to destination for self-care. The quality of service, friendly staff, and excellent results keep me coming back every time.",
+    emoji: "☀️",
+    user: "Sneha",
+    role: "Weekend customer"
   }
 ];
 
@@ -220,10 +220,10 @@ export default function About() {
         {/* Left: Business Description */}
         <div className="flex flex-col gap-8">
           <h2 className="text-2xl md:text-3xl font-display font-black leading-tight uppercase tracking-tighter lumen-gradient">
-            We redefine the limits of human sensation.
+            Your Journey to Relaxation Begins Here.
           </h2>
           <p className="text-[13px] font-bold uppercase tracking-[0.3em] max-w-xs leading-relaxed lumen-desc-gradient">
-            Athra Heavens is a sanctuary for the modern body, merging tech and tranquility with editorial luxury layouts.
+            At Atharva Heaven, we believe self-care is essential for a healthy and balanced lifestyle. Our salon and spa are designed to provide a relaxing escape where beauty, wellness, and comfort come together. With skilled professionals, premium products, and personalized treatments, we strive to deliver an exceptional experience that leaves every guest feeling refreshed, confident, and rejuvenated.
           </p>
         </div>
 
