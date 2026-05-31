@@ -216,7 +216,7 @@ export default function Hero() {
         className="absolute bottom-8 right-4 md:bottom-12 md:right-8 z-40 select-none pointer-events-none max-w-[80vw] text-right"
       >
         <h1 className="text-[20vw] md:text-[12vw] font-display font-black leading-[0.75] tracking-[-0.07em] text-white transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]" style={{ WebkitFontSmoothing: 'antialiased' }}>
-          ATHERVA<br />HEAVEN
+          ATHARVA<br />HEAVEN
         </h1>
       </div>
 
