@@ -9,20 +9,20 @@ import gsap, { ScrollTrigger } from '@/lib/gsap';
 const SERVICES = [
   {
     id: '01',
-    title: 'HOLISTIC RECOVERY',
-    description: 'A deep-dive into muscular regeneration using organic thermal gradients and hyper-oxygenated sessions.',
-    video: '/videos/service_1.mp4'
-  },
-  {
-    id: '02',
-    title: 'VAPOR THERAPY',
-    description: 'Envelop your senses in hyper-oxygenated micro-vapor sessions. Tranquility found in pure black minimalism.',
+    title: 'Ultimate Hydro Relaxation :',
+    description: 'Enjoy a soothing soak in our Jacuzzi tub, where warm water and gentle jets help relax muscles, improve circulation, and melt away daily stress.',
     video: '/videos/service_2.mp4'
   },
   {
+    id: '02',
+    title: 'Pure Steam Therapy :',
+    description: 'Relax in a warm steam-filled environment that helps open pores, cleanse the skin, and promote overall well-being. The soothing heat helps reduce stress and leaves you feeling refreshed.',
+    video: '/videos/service_1.mp4'
+  },
+  {
     id: '03',
-    title: 'KINETIC FLOW',
-    description: 'Precision-engineered movement sessions to unlock skeletal mobility and unleash your body experience.',
+    title: 'Luxurious Wine Therapy :',
+    description: 'Our wine massage combines soothing massage techniques with antioxidant-rich ingredients to help improve skin texture, reduce stress, and leave you feeling refreshed.',
     video: '/videos/service_3.mp4'
   }
 ];
