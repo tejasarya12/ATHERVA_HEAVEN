@@ -192,7 +192,7 @@ export default function Services() {
                 </div>
 
                 <div className="absolute top-12 right-12 text-xs font-mono text-white/60 tracking-[0.5em] font-black drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  [{service.id}_HEAVEN]
+                  [{service.id}]
                 </div>
               </div>
             </div>
