@@ -208,14 +208,14 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 py-32 px-8 flex flex-col items-center justify-center overflow-hidden text-[var(--text-primary)]"
+      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 py-16 md:py-32 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden text-[var(--text-primary)]"
     >
       {/* Section label on top-left of the screen */}
       <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50 text-xs md:text-sm font-black uppercase tracking-[0.3em] text-[var(--text-primary)] transition-colors duration-500">
         about us
       </div>
 
-      <div className="w-full max-w-[90vw] grid grid-cols-1 md:grid-cols-3 gap-20 relative z-10 items-center">
+      <div className="w-full max-w-[90vw] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20 relative z-10 items-center">
 
         {/* Left: Business Description */}
         <div className="flex flex-col gap-8">
@@ -230,14 +230,14 @@ export default function About() {
         {/* Center: Prominent Rating */}
         <div className="flex flex-col items-center justify-center text-center mt-12 md:mt-0">
           <div className="relative flex items-center justify-center w-full h-full">
-            <div className="text-8xl md:text-[12rem] font-display font-black leading-none opacity-90 select-none tracking-tighter relative z-10 text-[var(--text-primary)] transition-colors duration-500" id="rating-number">
+            <div className="text-7xl md:text-[12rem] font-display font-black leading-none opacity-90 select-none tracking-tighter relative z-10 text-[var(--text-primary)] transition-colors duration-500" id="rating-number">
               0.0
             </div>
             <div className="particles-wrap">
-              {Array.from({ length: 1000 }).map((_, i) => {
+              {Array.from({ length: 80 }).map((_, i) => {
                 const z = Math.random() * 360;
                 const y = Math.random() * 360;
-                const hue = (40 / 1000 * (i + 1)) + 180;
+                const hue = (40 / 80 * (i + 1)) + 180;
                 return (
                   <div
                     key={i}
@@ -263,7 +263,7 @@ export default function About() {
         <div className="relative h-[400px] md:h-[500px] flex items-center justify-center mt-12 md:mt-0">
 
           {/* Hand drawn hint */}
-          <div className="absolute -bottom-16 -right-6 md:-bottom-20 md:-right-24 w-[240px] md:w-[320px] z-20 pointer-events-none opacity-90">
+          <div className="absolute -bottom-8 -right-2 md:-bottom-20 md:-right-24 w-[160px] md:w-[320px] z-20 pointer-events-none opacity-90">
             <svg viewBox="0 0 350 250" className="w-full h-full text-[var(--text-primary)]" style={{ overflow: 'visible' }}>
               <text x="10" y="190" fontFamily="'Caveat', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 10 190)">
                 Tap or

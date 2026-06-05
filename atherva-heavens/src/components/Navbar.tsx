@@ -29,7 +29,7 @@ export default function Navbar() {
             }`}
         >
           <a href="#top" className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-white">
-            Atherva<span className="text-accent">.</span>Heavens
+            Atharva<span className="text-accent">.</span>Heaven
           </a>
           <ul className="hidden gap-1 md:flex">
             {links.map((l) => (

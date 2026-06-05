@@ -69,7 +69,7 @@ export default function Footer() {
     // Typewriter effect at the bottom
     const typewriter = document.getElementById('typewriter-text');
     if (typewriter) {
-      const text = "Atherva heaven";
+      const text = "Atharva heaven";
       let i = 0;
       const speed = 150;
       let timeoutId: any;
@@ -247,7 +247,7 @@ export default function Footer() {
         </div>
 
         <div className="relative z-10 mt-10 mb-10 flex justify-between items-center text-[9px] opacity-40 uppercase tracking-[0.5em] font-black">
-          <span>© 2026 Atherva Heavens Studio</span>
+          <span>© 2026 Atharva Heaven Studio</span>
           <span>A Stra-City, AE 0001</span>
         </div>
 
@@ -259,7 +259,7 @@ export default function Footer() {
             className="text-[14vw] font-display font-black leading-[0.75] tracking-tighter flex justify-between w-full select-none shadowy-text relative z-10"
             id="footer-logo"
           >
-            {"ATHERVAHEAVENS".split("").map((letter, i) => (
+            {"ATHARVAHEAVEN".split("").map((letter, i) => (
               <span key={i} className="letter inline-block" data-text={letter}>{letter}</span>
             ))}
           </div>

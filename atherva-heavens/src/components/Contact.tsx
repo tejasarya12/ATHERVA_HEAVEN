@@ -144,8 +144,8 @@ export default function Contact() {
         </div>
 
         {/* Left: Large Text */}
-        <div className="p-8 md:p-16 flex items-center justify-center border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500">
-          <h2 className="text-6xl md:text-[8vw] lg:text-[10vw] font-display font-black leading-[0.85] tracking-tighter uppercase opacity-90 select-none text-[var(--text-primary)] transition-colors duration-500 text-center lg:text-left">
+        <div className="p-6 md:p-16 flex items-center justify-center border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500">
+          <h2 className="text-5xl md:text-6xl lg:text-[10vw] font-display font-black leading-[0.85] tracking-tighter uppercase opacity-90 select-none text-[var(--text-primary)] transition-colors duration-500 text-center lg:text-left">
             DROP US<br />A LINE
           </h2>
         </div>
@@ -153,7 +153,7 @@ export default function Contact() {
         {/* Right: Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Box 1: Location */}
-          <div className="p-8 md:p-12 border-b md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between group min-h-[250px] md:min-h-[300px]">
+          <div className="p-6 md:p-12 border-b md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between group min-h-[250px] md:min-h-[300px]">
             <div>
               <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Location</span>
               <h4 className="text-xl font-medium opacity-87 leading-tight text-[var(--text-primary)] transition-colors duration-500">
@@ -168,7 +168,7 @@ export default function Contact() {
           </div>
 
           {/* Box 2: Contact */}
-          <div className="p-8 md:p-12 border-b border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
+          <div className="p-6 md:p-12 border-b border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
             <div>
               <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Contact</span>
               <div className="space-y-4">
@@ -183,7 +183,7 @@ export default function Contact() {
           </div>
 
           {/* Box 3: Trading Hours */}
-          <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
+          <div className="p-6 md:p-12 border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
             <div>
               <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Trading Hours</span>
               <div className="space-y-2 text-[11px] opacity-70 uppercase tracking-widest leading-relaxed font-medium text-[var(--text-primary)] transition-all duration-500">
@@ -197,7 +197,7 @@ export default function Contact() {
 
           {/* Box 4: Get a call from us */}
           <div 
-            className="p-8 md:p-12 flex flex-col justify-between min-h-[250px] md:min-h-[300px] transition-all duration-700"
+            className="p-6 md:p-12 flex flex-col justify-between min-h-[250px] md:min-h-[300px] transition-all duration-700"
             style={isFocused ? { boxShadow: 'inset 0 0 100px var(--focus-shadow)' } : undefined}
           >
             <div>

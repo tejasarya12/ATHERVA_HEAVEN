@@ -166,7 +166,7 @@ export default function Hero() {
       {/* Loading Overlay */}
       {loaded < 100 && (
         <div className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-black">
-          <div className="text-white/50 text-sm tracking-[0.3em] font-mono mb-4 uppercase">WELCOME TO ATHERVA HEAVEN</div>
+          <div className="text-white/50 text-sm tracking-[0.3em] font-mono mb-4 uppercase">WELCOME TO ATHARVA HEAVEN</div>
           <div className="w-64 h-[1px] bg-white/10 relative overflow-hidden">
             <div
               className="absolute top-0 left-0 h-full bg-white transition-all duration-300"
@@ -215,7 +215,7 @@ export default function Hero() {
         ref={textRef}
         className="absolute bottom-8 right-4 md:bottom-12 md:right-8 z-40 select-none pointer-events-none max-w-[80vw] text-right"
       >
-        <h1 className="text-[20vw] md:text-[12vw] font-display font-black leading-[0.75] tracking-[-0.07em] text-white transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]" style={{ WebkitFontSmoothing: 'antialiased' }}>
+        <h1 className="text-[17vw] md:text-[12vw] font-display font-black leading-[0.75] tracking-[-0.07em] text-white transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]" style={{ WebkitFontSmoothing: 'antialiased' }}>
           ATHARVA<br />HEAVEN
         </h1>
       </div>
