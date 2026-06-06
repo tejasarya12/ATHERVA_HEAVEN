@@ -2,23 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Darker+Grotesque:wght@300..900&family=Dela+Gothic+One&family=Knewave&family=Lobster&family=Modak&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400..800&family=Unbounded:wght@200..900&family=Yeseva+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+
 /* --- FONT EXPERIMENTATION CLASSES --- */
 /* To experiment, change the font-family inside these classes. */
 /* E.g., font-family: 'Space Mono', monospace; */
 
 /* 1: Hero Section - ATHarva Heaven above */
 .font-1 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'dela Gothic one', sans-serif;
 }
 
 /* 2: Hero Section - ATHarva Heaven text */
 .font-2 {
-  font-family: 'Unbounded', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 /* 3: Hero Section - ATHarva Heaven below */
 .font-3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'pacifico', sans-serif;
 }
 
 /* 4: Nav bar - Company name */
@@ -600,7 +604,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #6c8cff;
+  background: #d2c3f6;
   clip-path: circle(0px at calc(100vw - 60px) 60px);
   z-index: 99;
   pointer-events: none;
@@ -669,7 +673,7 @@ body {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: #6c8cff;
+  background: #d2c3f6;
   border-radius: 25%;
   z-index: 1;
 }

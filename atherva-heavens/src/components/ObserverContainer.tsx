@@ -102,12 +102,12 @@ export default function ObserverContainer() {
       <main ref={mainRef} className="relative h-screen w-full overflow-hidden z-50 bg-black">
         
         {/* About Section */}
-        <section className="panel absolute h-screen w-full top-0 left-0 z-20 bg-[var(--bg-primary)] overflow-hidden">
+        <section className="panel absolute h-screen w-full top-0 left-0 z-20 bg-[var(--bg-primary)] overflow-y-auto overflow-x-hidden">
           <About />
         </section>
 
         {/* Footer Section */}
-        <section className="panel absolute h-screen w-full top-full left-0 z-30 bg-black overflow-hidden">
+        <section className="panel absolute h-screen w-full top-full left-0 z-30 bg-black overflow-y-auto overflow-x-hidden">
           <Footer />
         </section>
 

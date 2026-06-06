@@ -145,7 +145,7 @@ export default function Navbar() {
             className={`liquid-glass-navbar pointer-events-auto flex items-center justify-between gap-4 md:gap-8 rounded-full pl-4 md:pl-6 pr-[4px] md:pr-[5px] h-10 md:h-12 transition-all duration-700 ease-out flex-1 ${scrolled ? "max-w-[580px] scale-[0.98]" : "max-w-[720px]"
               }`}
           >
-            <a href="#top" className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-white font-4">
+            <a href="#top" className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#d2c3f6] font-4">
               Atharva<span className="text-accent">.</span>Heaven
             </a>
             <ul className="hidden gap-1 md:flex">
@@ -227,9 +227,11 @@ export default function Navbar() {
                       setTimeout(() => {
                         window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
                       }, 800);
-                    }, 1200); // Wait for menu to close
+                    }, 800); // Wait for menu to close
                   } else if (target) {
-                    window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+                    setTimeout(() => {
+                      target.scrollIntoView({ behavior: 'smooth' });
+                    }, 800);
                   }
                 }}
               >
@@ -237,6 +239,31 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          {/* Added Contact Us for Mobile */}
+          <li>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                toggleMenu();
+                const target = document.querySelector('#contact') as HTMLElement;
+                if (target && (window as any).triggerWaveTransition) {
+                  setTimeout(() => {
+                    (window as any).triggerWaveTransition();
+                    setTimeout(() => {
+                      window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                    }, 800);
+                  }, 800);
+                } else if (target) {
+                  setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  }, 800);
+                }
+              }}
+            >
+              <span>Contact Us</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </>

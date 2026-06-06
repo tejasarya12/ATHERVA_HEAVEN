@@ -208,7 +208,7 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 py-16 md:py-32 px-4 md:px-8 flex flex-col items-center justify-center overflow-hidden text-[var(--text-primary)]"
+      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 py-16 md:py-32 px-4 md:px-8 flex flex-col items-center justify-center text-[var(--text-primary)]"
     >
       {/* Section label on top-left of the screen */}
       <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50 text-xs md:text-sm font-black uppercase tracking-[0.3em] text-[var(--text-primary)] transition-colors duration-500">
