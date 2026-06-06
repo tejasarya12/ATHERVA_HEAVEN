@@ -109,6 +109,12 @@ export default function Hero() {
         pin: true,
         scrub: 1.5,
         pinSpacing: false,
+        snap: {
+          snapTo: [0, 0.6, 1],
+          duration: { min: 0.8, max: 2 },
+          delay: 0.1,
+          ease: "power2.inOut"
+        },
         onUpdate: (self) => {
           // Frame sequence plays across the first 60% of the scroll
           const progress = Math.min(self.progress / 0.6, 1);
@@ -213,11 +219,32 @@ export default function Hero() {
       {/* Hero Typography */}
       <div
         ref={textRef}
-        className="absolute bottom-8 right-4 md:bottom-12 md:right-8 z-40 select-none pointer-events-none max-w-[80vw] text-right"
+        className="absolute inset-0 z-40 flex flex-col items-center justify-center select-none pointer-events-none text-center px-4"
       >
-        <h1 className="text-[17vw] md:text-[12vw] font-display font-black leading-[0.75] tracking-[-0.07em] text-white transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]" style={{ WebkitFontSmoothing: 'antialiased' }}>
+        <div className="text-sm md:text-xl font-medium text-white mb-2 tracking-[0.2em] uppercase drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-1">
+          Beauty and Wellness in Perfect Harmony with
+        </div>
+        <h1 className="text-[16vw] md:text-[10vw] font-black leading-[0.8] tracking-[-0.05em] text-white transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] mb-6 font-2" style={{ WebkitFontSmoothing: 'antialiased' }}>
           ATHARVA<br />HEAVEN
         </h1>
+        <div className="text-xs md:text-sm font-medium text-white/80 max-w-xl mx-auto uppercase tracking-widest leading-relaxed drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-3">
+          Experience expert salon care and soothing spa therapies that help you look your best and feel completely renewed right here in Bangalore.
+        </div>
+
+        {/* Scroll Down Arrow */}
+        <div
+          className="scroll-arrow mt-16 md:mt-24 pointer-events-auto"
+          onClick={() => {
+            const services = document.getElementById('services');
+            if (services) {
+              window.scrollTo({ top: services.offsetTop, behavior: 'smooth' });
+            }
+          }}
+        >
+          <span className="opacity-80"></span>
+          <span className="opacity-80"></span>
+          <span className="opacity-80"></span>
+        </div>
       </div>
 
       {/* Ambient grain */}

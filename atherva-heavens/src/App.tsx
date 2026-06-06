@@ -10,9 +10,9 @@ import gsap, { ScrollTrigger } from '@/lib/gsap';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import About from './components/About';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+import ObserverContainer from './components/ObserverContainer';
+import WaveTransition from './components/WaveTransition';
 
 export default function App() {
   useEffect(() => {
@@ -54,8 +54,8 @@ export default function App() {
       <Hero />
       <Services />
       <Contact />
-      <About />
-      <Footer />
+      <ObserverContainer />
+      <WaveTransition />
       <div className="grain-overlay" />
     </main>
   );

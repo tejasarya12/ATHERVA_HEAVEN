@@ -9,7 +9,6 @@ import GlowingInput from './GlowingInput';
 
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
   const [mobileNumber, setMobileNumber] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -45,27 +44,7 @@ export default function Footer() {
   };
 
   useEffect(() => {
-    if (!containerRef.current || !logoRef.current) return;
-
-    const letters = logoRef.current.querySelectorAll('.letter');
-
-    gsap.fromTo(letters,
-      { y: 400, opacity: 0, skewY: 10 },
-      {
-        y: 0,
-        opacity: 1,
-        skewY: 0,
-        stagger: 0.05,
-        duration: 1.5,
-        ease: "back.out(1.2)",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse"
-        }
-      }
-    );
-
+    if (!containerRef.current) return;
     // Typewriter effect at the bottom
     const typewriter = document.getElementById('typewriter-text');
     if (typewriter) {
@@ -159,7 +138,8 @@ export default function Footer() {
         </svg>
       </div>
 
-      <footer className="relative bg-black transition-colors duration-500 pt-20 pb-0 px-8 overflow-hidden text-white">
+    <div className="relative font-display w-full h-full flex flex-col" id="footer-container">
+      <footer className="relative bg-black transition-colors duration-500 pt-20 pb-0 px-8 overflow-hidden text-white flex-1 flex flex-col justify-between">
         <video
           autoPlay
           muted
@@ -168,14 +148,14 @@ export default function Footer() {
           preload="none"
           className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none footer-video"
         >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4" type="video/mp4" />
+          <source src="/videos/footer_background.mp4" type="video/mp4" />
         </video>
 
         <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-24 relative z-10 mb-40">
 
           {/* Left: Menu */}
           <div className="space-y-12">
-            <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Atmospheric_Navigation</h5>
+            <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Navigation</h5>
             <ul className="space-y-6 text-sm font-bold opacity-75 uppercase tracking-[0.2em]">
               <li><a href="#home" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">Home_Base</a></li>
               <li><a href="#services" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">Service_Story</a></li>
@@ -186,7 +166,7 @@ export default function Footer() {
 
           {/* Center: Socials */}
           <div className="space-y-12">
-            <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Digital_Atmosphere</h5>
+            <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Social_Connect</h5>
             <ul className="space-y-6 text-sm font-bold opacity-75 uppercase tracking-[0.2em]">
               <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Instagram</a></li>
               <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Twitter / X</a></li>
@@ -200,9 +180,9 @@ export default function Footer() {
             <div className="group rounded-[2rem] p-1.5 pb-0 bg-[#ffd60a] hover:bg-[#38bdf8] transition-colors duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex flex-col w-full max-w-sm relative">
 
               {/* Top Content (Inner Card) */}
-              <div className="bg-[black] text-[white] rounded-[1.75rem] p-8 space-y-8 flex-1 shadow-[0_8px_20px_rgba(0,0,0,0.15)] transition-colors duration-500">
+              <div className="bg-[black] group-hover:bg-[#fefcff] text-[white] group-hover:text-black rounded-[1.75rem] p-8 space-y-8 flex-1 shadow-[0_8px_20px_rgba(0,0,0,0.15)] transition-colors duration-500">
                 <div className="flex items-center justify-between">
-                  <h5 className="text-sm font-bold opacity-90">Body_Connection</h5>
+                  <h5 className="text-sm font-bold opacity-90">Connect with phone</h5>
                   <svg className="w-5 h-5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path></svg>
                 </div>
                 <p className="text-xs opacity-70 leading-relaxed font-medium">
@@ -243,30 +223,17 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-center mb-20 relative z-10">
-          <div id="typewriter-text" className="Atharva-Heaven-footer-text text-4xl md:text-7xl font-display font-black tracking-[0.2em] h-20"></div>
+          <div id="typewriter-text" className="Atharva-Heaven-footer-text text-4xl md:text-7xl font-black tracking-[0.2em] h-20 font-17"></div>
         </div>
 
-        <div className="relative z-10 mt-10 mb-10 flex justify-between items-center text-[9px] opacity-40 uppercase tracking-[0.5em] font-black">
+        <div className="relative z-10 mt-10 flex justify-between items-center text-[9px] opacity-40 uppercase tracking-[0.5em] font-black pb-10">
           <span>© 2026 Atharva Heaven Studio</span>
           <span>A Stra-City, AE 0001</span>
         </div>
 
-        <div
-          ref={logoRef}
-          className="relative w-full overflow-hidden flex items-end justify-center z-10 -mx-8 w-[calc(100%+4rem)]"
-        >
-          <div
-            className="text-[14vw] font-display font-black leading-[0.75] tracking-tighter flex justify-between w-full select-none shadowy-text relative z-10"
-            id="footer-logo"
-          >
-            {"ATHARVAHEAVEN".split("").map((letter, i) => (
-              <span key={i} className="letter inline-block" data-text={letter}>{letter}</span>
-            ))}
-          </div>
-        </div>
-
         <div className="grain-overlay" />
       </footer>
+    </div>
     </div>
   );
 }

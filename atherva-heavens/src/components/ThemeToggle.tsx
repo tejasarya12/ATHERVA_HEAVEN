@@ -31,78 +31,54 @@ export default function ThemeToggle() {
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className={`relative flex items-center justify-between rounded-full p-1 w-28 h-10 md:h-12 cursor-pointer select-none transition-all duration-500 backdrop-blur-xl outline-none group border ${
-        theme === "dark"
-          ? "bg-black/15 border-white/10 hover:border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),_0_4px_20px_rgba(0,0,0,0.4)]"
-          : "bg-white/15 border-black/10 hover:border-black/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),_0_4px_20px_rgba(0,0,0,0.08)]"
-      }`}
-      aria-label="Toggle dark and light theme"
-    >
-      {/* Background active texts */}
-      {/* Left text "Dark" is visible when dark mode is selected (knob is on the right) */}
-      <span
-        className={`absolute left-3 text-[10px] uppercase font-bold tracking-widest transition-all duration-500 ease-in-out ${
-          theme === "dark" ? "opacity-60 text-white translate-x-0" : "opacity-0 text-black -translate-x-2"
+    <div className="relative group inline-flex items-center justify-center">
+      <button
+        onClick={toggleTheme}
+        className={`relative flex items-center justify-center rounded-full w-10 h-10 cursor-pointer select-none transition-all duration-500 outline-none hover:bg-white/10 ${
+          theme === "dark"
+            ? "text-white"
+            : "text-black hover:bg-black/5"
         }`}
+        aria-label="Toggle dark and light theme"
       >
-        Dark
-      </span>
+        <div className={`absolute inset-0 rounded-full transition-colors duration-300 ${theme === 'dark' ? 'bg-[#3c4043]/30 group-hover:bg-[#3c4043]/60' : 'bg-[#e8eaed]/50 group-hover:bg-[#e8eaed]'} scale-90`} />
+        
+        {theme === "dark" ? (
+          // Sun Icon (Switch to light)
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5 relative z-10 transition-transform duration-500 hover:rotate-90"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+        ) : (
+          // Moon Icon (Switch to dark)
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5 relative z-10 transition-transform duration-500 hover:-rotate-12"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        )}
+      </button>
 
-      {/* Right text "Light" is visible when light mode is selected (knob is on the left) */}
-      <span
-        className={`absolute right-3 text-[10px] uppercase font-bold tracking-widest transition-all duration-500 ease-in-out ${
-          theme === "light" ? "opacity-60 text-black translate-x-0" : "opacity-0 text-white translate-x-2"
-        }`}
-      >
-        Light
-      </span>
-
-      {/* Sliding Knob */}
-      <div
-        className={`h-full aspect-square rounded-full bg-white flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-transform duration-500 ease-out relative z-10 ${
-          theme === "dark" ? "translate-x-[72px] md:translate-x-[64px]" : "translate-x-0"
-        }`}
-      >
-        {/* Sun Icon (shown when light theme active) */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`w-3.5 h-3.5 text-black absolute transition-all duration-500 ${
-            theme === "light" ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-50 -rotate-90"
-          }`}
-        >
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-        </svg>
-
-        {/* Moon Icon (shown when dark theme active) */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`w-3.5 h-3.5 text-black absolute transition-all duration-500 ${
-            theme === "dark" ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-50 rotate-90"
-          }`}
-        >
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-        </svg>
+      {/* Tooltip */}
+      <div className="absolute top-full right-0 md:right-auto md:left-1/2 md:-translate-x-1/2 mt-2 px-3 py-1.5 bg-[#f1f3f4] text-[#202124] text-[13px] font-sans rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-[99999] border border-black/5 font-medium tracking-normal">
+        Switch to {theme === "dark" ? "light" : "dark"} theme
       </div>
-
-      {/* Glass bubble highlight reflection effect inside the button container */}
-      <div className="absolute inset-0 rounded-full pointer-events-none overflow-hidden">
-        <div className="w-full h-1/2 bg-white/5 absolute top-0 left-0 rounded-t-full" />
-      </div>
-    </button>
+    </div>
   );
 }

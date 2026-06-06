@@ -84,7 +84,7 @@ export default function GlowingInput({
           {/* Custom blinking glowing caret with spotlight beam */}
           <span
             className={cn(
-              "w-[2.5px] h-[1.3em] bg-[var(--text-primary)] relative inline-block shrink-0 transition-opacity duration-300 ml-[1px]",
+              "w-[2.5px] h-[1.3em] bg-current relative inline-block shrink-0 transition-opacity duration-300 ml-[1px]",
               isFocused ? "opacity-100 animate-caret-blink" : "opacity-0"
             )}
             style={{

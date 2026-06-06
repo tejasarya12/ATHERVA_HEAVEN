@@ -43,6 +43,12 @@ export default function Services() {
         end: () => `+=${(cards.length + 1) * 200}%`,
         pin: true,
         scrub: 1.5,
+        snap: {
+          snapTo: "labelsDirectional",
+          duration: { min: 0.5, max: 1.5 },
+          delay: 0.1,
+          ease: "power1.inOut"
+        }
       }
     });
 
@@ -89,6 +95,8 @@ export default function Services() {
         );
       }
 
+      // Add label right when the card is fully in view and centered
+      tl.addLabel(`service-${i}`);
       // Stay centered
       tl.to({}, { duration: 1 });
 
@@ -183,11 +191,11 @@ export default function Services() {
               </video>
 
               {/* Text Container */}
-              <div className="relative z-10 w-full h-full p-8 md:p-32 flex flex-col justify-center gap-8">
-                <div className="service-title text-4xl md:text-[10vw] font-display font-black tracking-tighter text-white uppercase leading-[0.8] max-w-5xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]" id={`service-title-${index}`}>
+              <div className="relative z-10 w-full h-full p-8 pt-32 md:p-32 md:pt-48 flex flex-col justify-start items-center text-center gap-8">
+                <div className="service-title text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-tight max-w-4xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-6" id={`service-title-${index}`}>
                   {service.title}
                 </div>
-                <div className="service-desc text-lg md:text-2xl font-bold text-white/80 max-w-2xl leading-relaxed uppercase tracking-widest drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]" id={`service-desc-${index}`}>
+                <div className="service-desc text-base md:text-lg lg:text-xl font-bold text-white/80 max-w-3xl leading-relaxed uppercase tracking-widest drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-7" id={`service-desc-${index}`}>
                   {service.description}
                 </div>
 

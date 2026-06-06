@@ -24,22 +24,71 @@ export default function Contact() {
       alert("Please enter a valid 10-digit mobile number.");
       return;
     }
-    
+
     try {
       await fetch("https://formsubmit.co/ajax/anithanaik656@gmail.com", {
         method: "POST",
-        headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-            _subject: "New Callback Request!",
-            message: `A new user requested a callback. Their number is: ${mobileNumber}`
+          _subject: "New Callback Request!",
+          message: `A new user requested a callback. Their number is: ${mobileNumber}`
         })
       });
       setSubmitted(true);
       setMobileNumber('');
       setTimeout(() => setSubmitted(false), 5000);
+
+      // Confetti Animation
+      const createConfetti = () => {
+        const colors = ['#fde047', '#38bdf8', '#818cf8', '#a78bfa', '#ec4899', '#ffffff'];
+        const piece = document.createElement('div');
+        piece.style.position = 'fixed';
+        piece.style.left = '50%';
+        piece.style.top = '60%';
+        piece.style.width = `${Math.random() * 6 + 4}px`;
+        piece.style.height = piece.style.width;
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        piece.style.zIndex = '9999';
+        piece.style.pointerEvents = 'none';
+        document.body.appendChild(piece);
+        return piece;
+      };
+
+      for (let i = 0; i < 40; i++) {
+        const piece = createConfetti();
+        const angle = gsap.utils.random(210, 330) * (Math.PI / 180);
+        const velocity = gsap.utils.random(200, 500);
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+
+        // Horizontal movement & rotation
+        gsap.to(piece, {
+          x: tx,
+          rotation: gsap.utils.random(-720, 720),
+          duration: gsap.utils.random(1.5, 2.5),
+          ease: "power2.out",
+          onComplete: () => piece.remove()
+        });
+
+        // Vertical movement (gravity simulation)
+        gsap.to(piece, {
+          y: ty,
+          duration: gsap.utils.random(0.5, 0.8),
+          ease: "power2.out",
+          onComplete: () => {
+            gsap.to(piece, {
+              y: ty + 400,
+              duration: gsap.utils.random(1, 1.5),
+              ease: "power2.in"
+            });
+          }
+        });
+      }
+
     } catch (error) {
       console.error(error);
       alert("Failed to send request. Please try again.");
@@ -59,7 +108,7 @@ export default function Contact() {
     const handleMouseMove = (e: MouseEvent) => {
       if (!filterRef.current) return;
       const { clientX } = e;
-      
+
       gsap.to(filterRef.current, {
         attr: { baseFrequency: 0.015 + (clientX / window.innerWidth) * 0.005 },
         duration: 2,
@@ -70,32 +119,27 @@ export default function Contact() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const gridContainer = document.getElementById('contact-grid');
-    
+
     const scrollTl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "center center",
-        end: "+=100%", // pin for 1 scroll
+        start: "top top",
+        end: "+=100%",
+        scrub: 1,
         pin: true,
-        scrub: 1
       }
     });
 
-    if (gridContainer) {
-      scrollTl.to(gridContainer, {
-        scale: 1.05,
-        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-        duration: 1,
-        ease: "power1.inOut"
-      })
-      .to({}, { duration: 0.5 }) // Stay stuck
-      .to(gridContainer, {
-        scale: 1,
-        boxShadow: "none",
-        duration: 1,
-        ease: "power1.inOut"
-      });
-    }
+    scrollTl.fromTo(gridContainer, 
+      { scale: 0.8, opacity: 0, y: 100 },
+      { scale: 1, opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    )
+    .to(gridContainer, {
+      scale: 0.9,
+      opacity: 0.5,
+      duration: 0.5,
+      ease: "power2.in"
+    });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -104,13 +148,13 @@ export default function Contact() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      id="contact" 
+      id="contact"
       className="relative min-h-screen w-full bg-[var(--bg-primary)] transition-colors duration-500 flex flex-col items-center justify-center p-8 overflow-hidden z-[40]"
     >
       {/* Plastic Overlay Layer */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none z-30 opacity-60 mix-blend-screen animate-pulse duration-1000"
         style={{ filter: 'url(#plastic-displacement)' }}
       >
@@ -119,20 +163,20 @@ export default function Contact() {
 
       <svg className="hidden">
         <filter id="plastic-displacement">
-          <feTurbulence 
+          <feTurbulence
             ref={filterRef}
-            type="fractalNoise" 
-            baseFrequency="0.015" 
-            numOctaves="5" 
-            result="noise" 
+            type="fractalNoise"
+            baseFrequency="0.015"
+            numOctaves="5"
+            result="noise"
             seed="1"
           />
-          <feDisplacementMap 
-            in="SourceGraphic" 
-            in2="noise" 
-            scale="60" 
-            xChannelSelector="R" 
-            yChannelSelector="G" 
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="60"
+            xChannelSelector="R"
+            yChannelSelector="G"
           />
         </filter>
       </svg>
@@ -145,7 +189,7 @@ export default function Contact() {
 
         {/* Left: Large Text */}
         <div className="p-6 md:p-16 flex items-center justify-center border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500">
-          <h2 className="text-5xl md:text-6xl lg:text-[10vw] font-display font-black leading-[0.85] tracking-tighter uppercase opacity-90 select-none text-[var(--text-primary)] transition-colors duration-500 text-center lg:text-left">
+          <h2 className="text-5xl md:text-6xl lg:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase opacity-90 select-none text-[var(--text-primary)] transition-colors duration-500 text-center lg:text-left font-8">
             DROP US<br />A LINE
           </h2>
         </div>
@@ -155,9 +199,9 @@ export default function Contact() {
           {/* Box 1: Location */}
           <div className="p-6 md:p-12 border-b md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between group min-h-[250px] md:min-h-[300px]">
             <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Location</span>
-              <h4 className="text-xl font-medium opacity-87 leading-tight text-[var(--text-primary)] transition-colors duration-500">
-                  opposit Indian Bank, Veerannana,<br/>7th A Cross Rd, Nagavara,<br/>Bengaluru, Karnataka 560045
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Location</span>
+              <h4 className="text-xl font-medium opacity-87 leading-tight text-[var(--text-primary)] transition-colors duration-500 font-10">
+                opposit Indian Bank, Veerannana,<br />7th A Cross Rd, Nagavara,<br />Bengaluru, Karnataka 560045
               </h4>
             </div>
             <a href="https://www.google.com/maps/dir/?api=1&destination=Atharva+Heaven+Touch+Spa+&+Salon+opposit+Indian+Bank+Veerannana++7th+A+Cross+Rd+Nagavara+Bengaluru+Karnataka+560045" target="_blank" rel="noreferrer" className="w-fit">
@@ -167,41 +211,12 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* Box 2: Contact */}
-          <div className="p-6 md:p-12 border-b border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
-            <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Contact</span>
-              <div className="space-y-4">
-                <p className="text-sm opacity-87 border-b border-[var(--border-color)]/40 pb-2 inline-block text-[var(--text-primary)] transition-all duration-500 hover:text-[#38bdf8]">
-                  <a href="mailto:anithanaik656@gmail.com">anithanaik656@gmail.com</a>
-                </p>
-                <div className="text-sm opacity-60 flex flex-col gap-1 text-[var(--text-primary)] transition-all duration-500">
-                  <p className="hover:text-[#38bdf8]"><a href="tel:6360118439">6360118439</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Box 3: Trading Hours */}
-          <div className="p-6 md:p-12 border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
-            <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Trading Hours</span>
-              <div className="space-y-2 text-[11px] opacity-70 uppercase tracking-widest leading-relaxed font-medium text-[var(--text-primary)] transition-all duration-500">
-                <div className="flex justify-between"><span>Monday - Friday:</span> <span>11:00 am to 8:30 pm</span></div>
-                <div className="flex justify-between"><span>Saturdays:</span> <span>10:30 am to 9:00 pm</span></div>
-                <div className="flex justify-between"><span>Sundays:</span> <span>10:30 am to 9:00 pm</span></div>
-                <div className="flex justify-between"><span>Public Holidays:</span> <span>10:30 am to 9:00 pm</span></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Box 4: Get a call from us */}
-          <div 
-            className="p-6 md:p-12 flex flex-col justify-between min-h-[250px] md:min-h-[300px] transition-all duration-700"
-            style={isFocused ? { boxShadow: 'inset 0 0 100px var(--focus-shadow)' } : undefined}
+          {/* Box 2: Get a call from us */}
+          <div
+            className={`contact-glow-box p-6 md:p-12 border-b border-[var(--border-color)] flex flex-col justify-between min-h-[250px] md:min-h-[300px] transition-all duration-700 ${isFocused ? 'focused' : ''}`}
           >
             <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500">Callback_request</span>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Callback_request</span>
               <div className="relative mt-4">
                 <GlowingInput
                   value={mobileNumber}
@@ -224,9 +239,42 @@ export default function Contact() {
             </div>
             <p className="text-[9px] opacity-20 uppercase tracking-[0.4em] font-medium text-[var(--text-primary)] transition-colors duration-500">Tactile Material Realism Applied</p>
           </div>
+
+
+
+          {/* Box 3: Trading Hours */}
+          <div className="p-6 md:p-12 border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
+            <div>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Trading Hours</span>
+              <div className="space-y-2 text-[11px] opacity-70 uppercase tracking-widest leading-relaxed font-medium text-[var(--text-primary)] transition-all duration-500 font-10">
+                <div className="flex justify-between"><span>Monday - Friday:</span> <span>11:00 am to 8:30 pm</span></div>
+                <div className="flex justify-between"><span>Saturdays:</span> <span>10:30 am to 9:00 pm</span></div>
+                <div className="flex justify-between"><span>Sundays:</span> <span>10:30 am to 9:00 pm</span></div>
+                <div className="flex justify-between"><span>Public Holidays:</span> <span>10:30 am to 9:00 pm</span></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Box 4: Contact */}
+          <div className="p-6 md:p-12 border-b md:border-b-0 border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
+            <div>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Contact</span>
+              <div className="space-y-4 font-10">
+                <div className="text-sm opacity-60 flex flex-col gap-1 text-[var(--text-primary)] transition-all duration-500">
+                  <p className="hover:text-[#38bdf8]"><a href="tel:6360118439">6360118439</a></p>
+                </div>
+                <p className="text-sm opacity-87 border-b border-[var(--border-color)]/40 pb-2 inline-block text-[var(--text-primary)] transition-all duration-500 hover:text-[#38bdf8]">
+                  <a href="mailto:anithanaik656@gmail.com">anithanaik656@gmail.com</a>
+                </p>
+
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
-      
+
       <div className="grain-overlay" />
     </section>
   );

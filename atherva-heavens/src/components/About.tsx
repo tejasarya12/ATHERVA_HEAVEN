@@ -219,10 +219,10 @@ export default function About() {
 
         {/* Left: Business Description */}
         <div className="flex flex-col gap-8">
-          <h2 className="text-2xl md:text-3xl font-display font-black leading-tight uppercase tracking-tighter lumen-gradient">
+          <h2 className="text-2xl md:text-3xl font-black leading-tight uppercase tracking-tighter lumen-gradient font-11">
             Your Journey to Relaxation Begins Here.
           </h2>
-          <p className="text-[13px] font-bold uppercase tracking-[0.3em] max-w-xs leading-relaxed lumen-desc-gradient">
+          <p className="text-[13px] font-bold uppercase tracking-[0.3em] max-w-xs leading-relaxed lumen-desc-gradient font-12">
             At Atharva Heaven, we believe self-care is essential for a healthy and balanced lifestyle. Our salon and spa are designed to provide a relaxing escape where beauty, wellness, and comfort come together. With skilled professionals, premium products, and personalized treatments, we strive to deliver an exceptional experience that leaves every guest feeling refreshed, confident, and rejuvenated.
           </p>
         </div>
@@ -230,7 +230,7 @@ export default function About() {
         {/* Center: Prominent Rating */}
         <div className="flex flex-col items-center justify-center text-center mt-12 md:mt-0">
           <div className="relative flex items-center justify-center w-full h-full">
-            <div className="text-7xl md:text-[12rem] font-display font-black leading-none opacity-90 select-none tracking-tighter relative z-10 text-[var(--text-primary)] transition-colors duration-500" id="rating-number">
+            <div className="text-7xl md:text-[12rem] font-black leading-none opacity-90 select-none tracking-tighter relative z-10 text-[var(--text-primary)] transition-colors duration-500 font-13" id="rating-number">
               0.0
             </div>
             <div className="particles-wrap">
@@ -254,7 +254,7 @@ export default function About() {
               })}
             </div>
           </div>
-          <div className="mt-1 text-3xl opacity-20 animate-pulse select-none z-10">Average Rating</div>
+          <div className="mt-1 text-3xl opacity-20 animate-pulse select-none z-10 font-14">Average Rating</div>
 
           <div className="mt-8 text-8xl opacity-10 select-none font-black z-10">✳</div>
         </div>
@@ -285,10 +285,10 @@ export default function About() {
               >
                 <div className="flex-1 space-y-6">
                   <div className="text-2xl">{review.emoji}</div>
-                  <h4 className="text-2xl font-black leading-none uppercase tracking-tighter opacity-90">
+                  <h4 className="text-2xl font-black leading-none uppercase tracking-tighter opacity-90 font-15">
                     "{review.quote}"
                   </h4>
-                  <p className="text-sm font-medium opacity-60 leading-relaxed">
+                  <p className="text-sm font-medium opacity-60 leading-relaxed font-16">
                     {review.text}
                   </p>
                 </div>

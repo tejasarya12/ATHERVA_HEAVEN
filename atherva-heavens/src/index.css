@@ -1,5 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Darker+Grotesque:wght@300..900&family=Dela+Gothic+One&family=Knewave&family=Lobster&family=Modak&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400..800&family=Unbounded:wght@200..900&family=Yeseva+One&display=swap');
+
+/* --- FONT EXPERIMENTATION CLASSES --- */
+/* To experiment, change the font-family inside these classes. */
+/* E.g., font-family: 'Space Mono', monospace; */
+
+/* 1: Hero Section - ATHarva Heaven above */
+.font-1 {
+  font-family: 'Syne', sans-serif;
+}
+
+/* 2: Hero Section - ATHarva Heaven text */
+.font-2 {
+  font-family: 'Unbounded', sans-serif;
+}
+
+/* 3: Hero Section - ATHarva Heaven below */
+.font-3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 4: Nav bar - Company name */
+.font-4 {
+  font-family: 'Syne', sans-serif;
+}
+
+/* 5: Nav bar - Services, contact, About us text */
+.font-5 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 6: Service section - Service Heading */
+.font-6 {
+  font-family: 'Unbounded', sans-serif;
+}
+
+/* 7: Service section - Service description */
+.font-7 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 8: Contact Section - Big text (Drop us a line) */
+.font-8 {
+  font-family: 'Unbounded', sans-serif;
+}
+
+/* 9: Contact Section - Each box Heading */
+.font-9 {
+  font-family: 'Syne', sans-serif;
+}
+
+/* 10: Contact Section - Each box content */
+.font-10 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 11: About us - Text Heading */
+.font-11 {
+  font-family: 'Unbounded', sans-serif;
+}
+
+/* 12: About us - Text describing */
+.font-12 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 13: About us - Rating number */
+.font-13 {
+  font-family: 'Unbounded', sans-serif;
+}
+
+/* 14: About us - Rating text */
+.font-14 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 15: About us - Customer review header */
+.font-15 {
+  font-family: 'Syne', sans-serif;
+}
+
+/* 16: About us - Customer review description */
+.font-16 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 17: Footer - Athera heaven typewrite */
+.font-17 {
+  font-family: 'Space Mono', monospace;
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -336,13 +427,31 @@ body {
 
 /* Animated Call Card */
 @keyframes border-shift {
-  0%, 15% { border-color: #ffd60a; }
-  85%, 100% { border-color: #38bdf8; }
+
+  0%,
+  15% {
+    border-color: #ffd60a;
+  }
+
+  85%,
+  100% {
+    border-color: #38bdf8;
+  }
 }
 
 @keyframes bg-shift {
-  0%, 15% { background-color: #ffd60a; color: #111111; }
-  85%, 100% { background-color: #38bdf8; color: #111111; }
+
+  0%,
+  15% {
+    background-color: #ffd60a;
+    color: #111111;
+  }
+
+  85%,
+  100% {
+    background-color: #38bdf8;
+    color: #111111;
+  }
 }
 
 .animated-call-card {
@@ -365,63 +474,219 @@ body {
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
+
 .darker-grotesque {
   font-family: "Darker Grotesque", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
+
 .unbounded {
   font-family: "Unbounded", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
+
 .space-mono-regular {
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: normal;
 }
+
 .space-mono-bold {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-style: normal;
 }
+
 .space-mono-regular-italic {
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-style: italic;
 }
+
 .space-mono-bold-italic {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-style: italic;
 }
+
 .dela-gothic-one-regular {
   font-family: "Dela Gothic One", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+
 .modak-regular {
   font-family: "Modak", system-ui;
   font-weight: 400;
   font-style: normal;
 }
+
 .montserrat {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
+
 .knewave-regular {
   font-family: "Knewave", system-ui;
   font-weight: 400;
   font-style: normal;
 }
+
 .syne {
   font-family: "Syne", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
+
 .yeseva-one-regular {
   font-family: "Yeseva One", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+/* Scroll Down Arrow */
+.scroll-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scroll-arrow span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  transform: rotate(45deg);
+  margin: -5px;
+  animation: animate-arrow 2s infinite;
+}
+
+.scroll-arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.scroll-arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate-arrow {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+}
+
+/* Mobile Nav Styles */
+.mobile-nav-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #6c8cff;
+  clip-path: circle(0px at calc(100vw - 60px) 60px);
+  z-index: 99;
+  pointer-events: none;
+}
+
+.mobile-nav-overlay ul {
+  margin-left: 0;
+  text-align: center;
+}
+
+.mobile-nav-overlay li {
+  position: relative;
+  list-style: none;
+  padding: 15px 0;
+  cursor: pointer;
+  transform: translateX(-200px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobile-nav-overlay li span {
+  font-size: 3rem;
+  font-family: "Unbounded", sans-serif;
+  font-weight: bold;
+  opacity: 0.8;
+  transition: opacity 0.25s ease;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.mobile-nav-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  z-index: 100;
+}
+
+.mobile-nav-btn .icons {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.mobile-nav-btn svg {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  fill: #fff;
+}
+
+.mobile-nav-btn svg.close {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(125%);
+}
+
+.mobile-nav-btn .btn--bg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: #6c8cff;
+  border-radius: 25%;
+  z-index: 1;
+}
+
+/* Contact Glow Box */
+.contact-glow-box {
+  box-shadow: inset 0 0 50px -15px rgba(210, 210, 210, 0.4), inset 0 0 15px -4px rgba(255, 255, 255, 0.2);
+}
+
+.contact-glow-box.focused {
+  box-shadow: inset 0 0 60px -30px rgba(210, 210, 210, 0.8), inset 0 0 30px -8px rgba(190, 190, 190, 0.6), inset 0 0 20px -6px rgba(255, 255, 255, 0.5), inset 0 0 6px -2px rgba(255, 255, 255, 0.3);
+}
+
+.light .contact-glow-box {
+  box-shadow: inset 0 0 50px -15px rgba(0, 0, 0, 0.4), inset 0 0 15px -4px rgba(0, 0, 0, 0.2);
+}
+
+.light .contact-glow-box.focused {
+  box-shadow: inset 0 0 60px -30px rgba(0, 0, 0, 0.8), inset 0 0 30px -8px rgba(0, 0, 0, 0.6), inset 0 0 20px -6px rgba(0, 0, 0, 0.5), inset 0 0 6px -2px rgba(0, 0, 0, 0.3);
 }
