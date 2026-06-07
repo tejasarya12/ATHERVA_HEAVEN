@@ -221,7 +221,7 @@ export default function Hero() {
         ref={textRef}
         className="absolute inset-0 z-40 flex flex-col items-center justify-center select-none pointer-events-none text-center px-4"
       >
-        <div className="text-xl md:text-xl font-medium text-[#fffefe] mb-2 tracking-[0.0em]  drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-1">
+        <div className="text-xm md:text-xl font-medium text-[#fffefe] mb-2 tracking-[0.0em]  drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-1">
           Beauty and Wellness in Perfect Harmony with
         </div>
         <h1 className="text-[16vw] md:text-[10vw] font-black leading-[0.8] tracking-[-0.05em] text-[#d2c3f6] transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] mb-6 font-2" style={{ WebkitFontSmoothing: 'antialiased' }}>
