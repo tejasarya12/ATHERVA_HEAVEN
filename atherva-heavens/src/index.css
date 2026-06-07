@@ -12,17 +12,17 @@
 
 /* 1: Hero Section - ATHarva Heaven above */
 .font-1 {
-  font-family: 'dela Gothic one', sans-serif;
+  font-family: 'pacifico', sans-serif;
 }
 
 /* 2: Hero Section - ATHarva Heaven text */
 .font-2 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Unbounded', sans-serif;
 }
 
 /* 3: Hero Section - ATHarva Heaven below */
 .font-3 {
-  font-family: 'pacifico', sans-serif;
+  font-family: 'bricolage grotesque', sans-serif;
 }
 
 /* 4: Nav bar - Company name */
@@ -42,7 +42,7 @@
 
 /* 7: Service section - Service description */
 .font-7 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'bricolage grotesque', sans-serif;
 }
 
 /* 8: Contact Section - Big text (Drop us a line) */
@@ -57,7 +57,7 @@
 
 /* 10: Contact Section - Each box content */
 .font-10 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'bricolage grotesque', sans-serif;
 }
 
 /* 11: About us - Text Heading */
@@ -67,7 +67,7 @@
 
 /* 12: About us - Text describing */
 .font-12 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'pacifico', sans-serif;
 }
 
 /* 13: About us - Rating number */
@@ -82,12 +82,12 @@
 
 /* 15: About us - Customer review header */
 .font-15 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'rubik', sans-serif;
 }
 
 /* 16: About us - Customer review description */
 .font-16 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'bricolage grotesque', sans-serif;
 }
 
 /* 17: Footer - Athera heaven typewrite */

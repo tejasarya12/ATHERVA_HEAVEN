@@ -192,10 +192,10 @@ export default function Services() {
 
               {/* Text Container */}
               <div className="relative z-10 w-full h-full p-8 pt-32 md:p-32 md:pt-48 flex flex-col justify-start items-center text-center gap-8">
-                <div className="service-title text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-tight max-w-4xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-6" id={`service-title-${index}`}>
+                <div className="service-title text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-[#d2c3f6] uppercase leading-tight max-w-4xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-6" id={`service-title-${index}`}>
                   {service.title}
                 </div>
-                <div className="service-desc text-base md:text-lg lg:text-xl font-bold text-white/80 max-w-3xl leading-relaxed uppercase tracking-widest drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-7" id={`service-desc-${index}`}>
+                <div className="service-desc text-base md:text-lg lg:text-xl font-bold text-white/99 max-w-2xl leading-relaxed  tracking-widest drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-7" id={`service-desc-${index}`}>
                   {service.description}
                 </div>
 

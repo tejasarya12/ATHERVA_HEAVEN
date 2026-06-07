@@ -227,8 +227,8 @@ export default function Footer() {
           </div>
 
           <div className="relative z-10 mt-10 flex justify-between items-center text-[9px] opacity-40 uppercase tracking-[0.5em] font-black pb-10">
-            <span>© 2026 Atharva Heaven Studio</span>
-            <span>A Stra-City, AE 0001</span>
+            <span>© 2026 Atharva Heaven</span>
+
           </div>
 
           <div className="grain-overlay" />

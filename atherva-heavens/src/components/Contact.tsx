@@ -130,16 +130,16 @@ export default function Contact() {
       }
     });
 
-    scrollTl.fromTo(gridContainer, 
+    scrollTl.fromTo(gridContainer,
       { scale: 0.8, opacity: 0, y: 100 },
       { scale: 1, opacity: 1, y: 0, duration: 1, ease: "power2.out" }
     )
-    .to(gridContainer, {
-      scale: 0.9,
-      opacity: 0.5,
-      duration: 0.5,
-      ease: "power2.in"
-    });
+      .to(gridContainer, {
+        scale: 0.9,
+        opacity: 0.5,
+        duration: 0.5,
+        ease: "power2.in"
+      });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -237,7 +237,7 @@ export default function Contact() {
                 )}
               </div>
             </div>
-            <p className="text-[9px] opacity-20 uppercase tracking-[0.4em] font-medium text-[var(--text-primary)] transition-colors duration-500">Tactile Material Realism Applied</p>
+            <p className="text-[9px] opacity-20 uppercase tracking-[0.4em] font-medium text-[var(--text-primary)] transition-colors duration-500">Get a call from us within 12 celestial hours.</p>
           </div>
 
 

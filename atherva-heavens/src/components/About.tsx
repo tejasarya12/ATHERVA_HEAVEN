@@ -219,10 +219,10 @@ export default function About() {
 
         {/* Left: Business Description */}
         <div className="flex flex-col gap-8">
-          <h2 className="text-2xl md:text-3xl font-black leading-tight uppercase tracking-tighter lumen-gradient font-11">
+          <h2 className="text-2xl md:text-3xl font-black leading-tight uppercase tracking-tighter text-[#d2c3f6] font-11">
             Your Journey to Relaxation Begins Here.
           </h2>
-          <p className="text-[13px] font-bold uppercase tracking-[0.3em] max-w-xs leading-relaxed lumen-desc-gradient font-12">
+          <p className="text-[18px] font-medium  tracking-[0.05em] max-w-xs leading-10 lumen-desc-gradient font-12">
             At Atharva Heaven, we believe self-care is essential for a healthy and balanced lifestyle. Our salon and spa are designed to provide a relaxing escape where beauty, wellness, and comfort come together. With skilled professionals, premium products, and personalized treatments, we strive to deliver an exceptional experience that leaves every guest feeling refreshed, confident, and rejuvenated.
           </p>
         </div>
@@ -230,7 +230,7 @@ export default function About() {
         {/* Center: Prominent Rating */}
         <div className="flex flex-col items-center justify-center text-center mt-12 md:mt-0">
           <div className="relative flex items-center justify-center w-full h-full">
-            <div className="text-7xl md:text-[12rem] font-black leading-none opacity-90 select-none tracking-tighter relative z-10 text-[var(--text-primary)] transition-colors duration-500 font-13" id="rating-number">
+            <div className="text-7xl md:text-[12rem] font-black leading-none opacity-90 select-none tracking-tighter relative z-10 text-[#d2c3f6] transition-colors duration-500 font-13" id="rating-number">
               0.0
             </div>
             <div className="particles-wrap">
@@ -256,7 +256,7 @@ export default function About() {
           </div>
           <div className="mt-1 text-3xl opacity-20 animate-pulse select-none z-10 font-14">Average Rating</div>
 
-          <div className="mt-8 text-8xl opacity-10 select-none font-black z-10">✳</div>
+
         </div>
 
         {/* Right: Review Cards Stack (Pinned Storytelling) */}
@@ -265,10 +265,10 @@ export default function About() {
           {/* Hand drawn hint */}
           <div className="absolute -bottom-8 -right-2 md:-bottom-20 md:-right-24 w-[160px] md:w-[320px] z-20 pointer-events-none opacity-90">
             <svg viewBox="0 0 350 250" className="w-full h-full text-[var(--text-primary)]" style={{ overflow: 'visible' }}>
-              <text x="10" y="190" fontFamily="'Caveat', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 10 190)">
+              <text x="10" y="190" fontFamily="'knewave', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 10 190)">
                 Tap or
               </text>
-              <text x="40" y="235" fontFamily="'Caveat', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 40 235)">
+              <text x="40" y="235" fontFamily="'knewave', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 40 235)">
                 drag cards
               </text>
               {/* Thick arrow pointing UP and LEFT to the cards */}
