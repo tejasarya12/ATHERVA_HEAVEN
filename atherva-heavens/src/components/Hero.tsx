@@ -5,6 +5,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import gsap, { ScrollTrigger } from '@/lib/gsap';
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ export default function Hero() {
   const totalFrames = 74;
   const frames = useRef<HTMLImageElement[]>([]);
   const ZOOM_FACTOR = 1.0;
+  const { t } = useLanguage();
 
   // Preload images
   useEffect(() => {
@@ -180,7 +182,7 @@ export default function Hero() {
     }, 50);
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      tl.kill();
     };
   }, [loaded]);
 
@@ -241,13 +243,13 @@ export default function Hero() {
         className="absolute inset-0 z-40 flex flex-col items-center justify-center select-none pointer-events-none text-center px-4"
       >
         <div className="text-xm md:text-xl font-medium text-[#fffefe] mb-2 tracking-[0.0em]  drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-1">
-          Beauty and Wellness in Perfect Harmony with
+          {t("hero.subtitle")}
         </div>
         <h1 className="text-[16vw] md:text-[10vw] font-black leading-[0.8] tracking-[-0.05em] text-[#d2c3f6] transition-colors duration-500 uppercase drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] mb-6 font-2" style={{ WebkitFontSmoothing: 'antialiased' }}>
-          ATHARVA<br />HEAVEN
+          {t("hero.title1")}<br />{t("hero.title2")}
         </h1>
         <div className="text-xm md:text-xl font-medium text-[#fffefe]/90 max-w-xl mx-auto tracking-widest leading-0.5 drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] font-3">
-          Salon and Spa.
+          {t("hero.tagline")}
         </div>
 
         {/* Scroll Down Arrow */}

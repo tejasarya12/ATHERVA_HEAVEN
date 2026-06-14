@@ -14,8 +14,19 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Footer from './components/Footer';
 import WaveTransition from './components/WaveTransition';
+import { useLanguage } from './contexts/LanguageContext';
 
 export default function App() {
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    // Refresh ScrollTriggers after DOM updates when language changes
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [language]);
+
   useEffect(() => {
     // 1. Lenis Setup: Premium "heavy" feel with lerp 0.1
     const lenis = new Lenis({
@@ -23,6 +34,8 @@ export default function App() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       lerp: 0.1,
     });
+
+    (window as any).lenis = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 

@@ -694,3 +694,35 @@ body {
 .light .contact-glow-box.focused {
   box-shadow: inset 0 0 60px -30px rgba(0, 0, 0, 0.8), inset 0 0 30px -8px rgba(0, 0, 0, 0.6), inset 0 0 20px -6px rgba(0, 0, 0, 0.5), inset 0 0 6px -2px rgba(0, 0, 0, 0.3);
 }
+
+/* ScrambleText Plugin Utility Classes */
+.service-title, .service-desc {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.title-settled {
+  color: #d2c3f6 !important;
+  background-color: var(--bg-primary) !important;
+  padding: 0.1em 0.3em;
+  line-height: 1.4;
+}
+
+.title-scrambling {
+  color: var(--bg-primary) !important;
+  background-color: #d2c3f6 !important;
+  padding: 0.1em 0.3em;
+}
+
+.desc-settled {
+  color: #000 !important;
+  background-color: #d2c3f6 !important;
+  padding: 0.1em 0.3em;
+  line-height: 1.6;
+}
+
+.desc-scrambling {
+  color: #d2c3f6 !important;
+  background-color: #000 !important;
+  padding: 0.1em 0.3em;
+}

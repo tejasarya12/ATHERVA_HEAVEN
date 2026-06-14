@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap, { ScrollTrigger } from '@/lib/gsap';
 import { cn } from '@/lib/utils';
 import GlowingInput from './GlowingInput';
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,6 +15,7 @@ export default function Contact() {
   const [isFocused, setIsFocused] = useState(false);
   const [mobileNumber, setMobileNumber] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const { t, language } = useLanguage();
 
   const handleSubmit = async () => {
     if (!mobileNumber) {
@@ -184,13 +186,13 @@ export default function Contact() {
       <div className="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 bg-[var(--glass-bg)] border border-[var(--border-color)] transition-colors duration-500" id="contact-grid">
         {/* Bold section title in card top-left corner */}
         <div className="absolute top-4 left-4 md:top-6 md:left-6 text-xs md:text-sm font-black uppercase tracking-[0.3em] text-[var(--text-primary)] z-50">
-          contact us
+          {t("contact.label")}
         </div>
 
         {/* Left: Large Text */}
-        <div className="p-6 md:p-16 flex items-center justify-center border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500">
-          <h2 className="text-5xl md:text-6xl lg:text-[10vw] font-black leading-[0.85] tracking-tighter uppercase opacity-90 select-none text-[var(--text-primary)] transition-colors duration-500 text-center lg:text-left font-8">
-            DROP US<br />A LINE
+        <div className="p-6 md:p-16 flex items-center justify-center border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500 overflow-hidden">
+          <h2 className={`font-black leading-[0.85] tracking-tighter uppercase opacity-90 select-none text-[var(--text-primary)] transition-colors duration-500 text-center lg:text-left font-8 ${language === 'kn' ? 'text-4xl md:text-6xl lg:text-[6vw] break-words' : 'text-5xl md:text-6xl lg:text-[10vw]'}`} style={{ whiteSpace: 'pre-line' }}>
+            {t("contact.title")}
           </h2>
         </div>
 
@@ -199,14 +201,20 @@ export default function Contact() {
           {/* Box 1: Location */}
           <div className="p-6 md:p-12 border-b md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between group min-h-[250px] md:min-h-[300px]">
             <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Location</span>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">{t("contact.location.label")}</span>
               <h4 className="text-xl font-medium opacity-87 leading-tight text-[var(--text-primary)] transition-colors duration-500 font-10">
-                opposit Indian Bank, Veerannana,<br />7th A Cross Rd, Nagavara,<br />Bengaluru, Karnataka 560045
+                {t("contact.location.address").split(', ').map((part, i, arr) => (
+                  <span key={i}>
+                    {part}
+                    {i < arr.length - 1 && i % 2 !== 0 && <br />}
+                    {i < arr.length - 1 && i % 2 === 0 && ', '}
+                  </span>
+                ))}
               </h4>
             </div>
             <a href="https://www.google.com/maps/dir/?api=1&destination=Atharva+Heaven+Touch+Spa+&+Salon+opposit+Indian+Bank+Veerannana++7th+A+Cross+Rd+Nagavara+Bengaluru+Karnataka+560045" target="_blank" rel="noreferrer" className="w-fit">
               <button className="px-6 py-2 border border-[var(--border-color)] rounded-full text-[10px] font-bold tracking-widest hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-500 magnetic uppercase">
-                Get Directions
+                {t("contact.location.btn")}
               </button>
             </a>
           </div>
@@ -216,7 +224,7 @@ export default function Contact() {
             className={`contact-glow-box p-6 md:p-12 border-b border-[var(--border-color)] flex flex-col justify-between min-h-[250px] md:min-h-[300px] transition-all duration-700 ${isFocused ? 'focused' : ''}`}
           >
             <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Callback_request</span>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">{t("contact.callback.label")}</span>
               <div className="relative mt-4">
                 <GlowingInput
                   value={mobileNumber}
@@ -224,7 +232,7 @@ export default function Contact() {
                     const digits = val.replace(/\D/g, '');
                     if (digits.length <= 10) setMobileNumber(digits);
                   }}
-                  placeholder="Your mobile number"
+                  placeholder={t("contact.callback.placeholder")}
                   onFocus={() => setIsFocused(true)}
                   onBlur={() => setIsFocused(false)}
                   className="text-lg font-black uppercase tracking-tighter"
@@ -232,12 +240,12 @@ export default function Contact() {
                 />
                 {submitted && (
                   <p className="absolute -bottom-8 left-0 text-[10px] text-green-400 font-bold tracking-widest uppercase transition-opacity duration-500">
-                    We will reach you early
+                    {t("contact.callback.success")}
                   </p>
                 )}
               </div>
             </div>
-            <p className="text-[9px] opacity-20 uppercase tracking-[0.4em] font-medium text-[var(--text-primary)] transition-colors duration-500">Get a call from us within 12 celestial hours.</p>
+            <p className="text-[9px] opacity-20 uppercase tracking-[0.4em] font-medium text-[var(--text-primary)] transition-colors duration-500">{t("contact.callback.desc")}</p>
           </div>
 
 
@@ -245,12 +253,10 @@ export default function Contact() {
           {/* Box 3: Trading Hours */}
           <div className="p-6 md:p-12 border-b md:border-b-0 md:border-r border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
             <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Trading Hours</span>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">{t("contact.hours.label")}</span>
               <div className="space-y-2 text-[11px] opacity-70 uppercase tracking-widest leading-relaxed font-medium text-[var(--text-primary)] transition-all duration-500 font-10">
-                <div className="flex justify-between"><span>Monday - Friday:</span> <span>11:00 am to 8:30 pm</span></div>
-                <div className="flex justify-between"><span>Saturdays:</span> <span>10:30 am to 9:00 pm</span></div>
-                <div className="flex justify-between"><span>Sundays:</span> <span>10:30 am to 9:00 pm</span></div>
-                <div className="flex justify-between"><span>Public Holidays:</span> <span>10:30 am to 9:00 pm</span></div>
+                <div className="flex justify-between"><span>{t("contact.hours.mon_fri")}</span> <span>{t("contact.hours.mon_fri_time")}</span></div>
+                <div className="flex justify-between"><span>{t("contact.hours.sat_sun")}</span> <span>{t("contact.hours.sat_sun_time")}</span></div>
               </div>
             </div>
           </div>
@@ -258,7 +264,7 @@ export default function Contact() {
           {/* Box 4: Contact */}
           <div className="p-6 md:p-12 border-b md:border-b-0 border-[var(--border-color)] transition-colors duration-500 flex flex-col justify-between min-h-[250px] md:min-h-[300px]">
             <div>
-              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">Contact</span>
+              <span className="text-[10px] tracking-[0.4em] text-[var(--text-primary)] opacity-40 uppercase mb-6 block font-bold transition-all duration-500 font-9">{t("contact.social.label")}</span>
               <div className="space-y-4 font-10">
                 <div className="text-sm opacity-60 flex flex-col gap-1 text-[var(--text-primary)] transition-all duration-500">
                   <p className="hover:text-[#38bdf8]"><a href="tel:6360118439">6360118439</a></p>

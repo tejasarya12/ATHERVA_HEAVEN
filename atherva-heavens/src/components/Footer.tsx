@@ -6,11 +6,13 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap, { ScrollTrigger } from '@/lib/gsap';
 import GlowingInput from './GlowingInput';
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mobileNumber, setMobileNumber] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = async () => {
     if (!mobileNumber) {
@@ -47,8 +49,9 @@ export default function Footer() {
     if (!containerRef.current) return;
     // Typewriter effect at the bottom
     const typewriter = document.getElementById('typewriter-text');
+    let typeTrigger: any;
     if (typewriter) {
-      const text = "Atharva heaven";
+      const text = t("footer.typewriter");
       let i = 0;
       const speed = 150;
       let timeoutId: any;
@@ -61,7 +64,7 @@ export default function Footer() {
         }
       };
 
-      ScrollTrigger.create({
+      typeTrigger = ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top center",
         onEnter: () => {
@@ -92,9 +95,14 @@ export default function Footer() {
 
     return () => {
       waveTl.kill();
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      if (typeof typeTrigger !== 'undefined') {
+          typeTrigger.kill();
+      } else {
+          // If typewriter doesn't exist, we must still clean up anything created specifically here, 
+          // but there's no other scroll trigger in this file.
+      }
     };
-  }, []);
+  }, [t]);
 
   return (
     <div ref={containerRef} className="relative w-full">
@@ -155,22 +163,22 @@ export default function Footer() {
 
             {/* Left: Menu */}
             <div className="space-y-12">
-              <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Navigation</h5>
+              <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">{t("footer.nav")}</h5>
               <ul className="space-y-6 text-sm font-bold opacity-75 uppercase tracking-[0.2em]">
-                <li><a href="#home" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">Home</a></li>
-                <li><a href="#services" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">Services</a></li>
-                <li><a href="#about" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">About</a></li>
-                <li><a href="#contact" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">Contact</a></li>
+                <li><a href="#home" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">{t("nav.home")}</a></li>
+                <li><a href="#services" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">{t("nav.services")}</a></li>
+                <li><a href="#about" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">{t("nav.about")}</a></li>
+                <li><a href="#contact" className="hover:opacity-100 transition-opacity underline-offset-4 hover:underline magnetic">{t("contact.label")}</a></li>
               </ul>
             </div>
 
             {/* Center: Socials */}
             <div className="space-y-12">
-              <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Social_Connect</h5>
+              <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">{t("footer.social")}</h5>
               <ul className="space-y-6 text-sm font-bold opacity-75 uppercase tracking-[0.2em]">
-                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Instagram</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Facebook</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Mail Us</a></li>
+                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">{t("social.instagram")}</a></li>
+                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">{t("social.facebook")}</a></li>
+                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">{t("social.twitter")}</a></li>
 
               </ul>
             </div>
@@ -182,11 +190,11 @@ export default function Footer() {
                 {/* Top Content (Inner Card) */}
                 <div className="bg-[black] group-hover:bg-[#fefcff] text-[white] group-hover:text-black rounded-[1.75rem] p-8 space-y-8 flex-1 shadow-[0_8px_20px_rgba(0,0,0,0.15)] transition-colors duration-500">
                   <div className="flex items-center justify-between">
-                    <h5 className="text-sm font-bold opacity-90">Connect with phone</h5>
+                    <h5 className="text-sm font-bold opacity-90">{t("footer.connect.title")}</h5>
                     <svg className="w-5 h-5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7"></path></svg>
                   </div>
                   <p className="text-xs opacity-70 leading-relaxed font-medium">
-                    Get a call from us within 12 celestial hours.
+                    {t("footer.connect.desc")}
                   </p>
                   <div className="relative group/input w-full">
                     <GlowingInput
@@ -195,13 +203,13 @@ export default function Footer() {
                         const digits = val.replace(/\D/g, '');
                         if (digits.length <= 10) setMobileNumber(digits);
                       }}
-                      placeholder="Mobile number"
+                      placeholder={t("footer.connect.placeholder")}
                       className="text-sm font-black tracking-widest w-full"
                       onSubmit={handleSubmit}
                     />
                     {submitted && (
                       <p className="absolute -bottom-8 left-0 text-[10px] text-green-500 font-bold tracking-widest uppercase transition-opacity duration-500">
-                        We will reach you early
+                        {t("footer.connect.success")}
                       </p>
                     )}
                   </div>
@@ -209,7 +217,7 @@ export default function Footer() {
 
                 {/* Bottom Footer */}
                 <div className="px-8 py-5 flex items-center justify-between text-[#111]">
-                  <span className="text-sm font-bold opacity-90">Contact with ease</span>
+                  <span className="text-sm font-bold opacity-90">{t("footer.connect.footer")}</span>
                   {/* Badge of phone icon in transparent silver */}
                   <div className="bg-white/40 backdrop-blur-md rounded-full p-2 shadow-[0_2px_10px_rgba(0,0,0,0.1)] border border-white/50">
                     <svg className="w-4 h-4 text-black/90" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -5,34 +5,27 @@
 
 import React, { useEffect, useRef } from 'react';
 import gsap, { ScrollTrigger, Draggable } from '@/lib/gsap';
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const REVIEWS = [
   {
-    quote: "Exceptional Service & Care",
-    text: "From the warm welcome to the professional treatments, Atharva Heaven exceeded my expectations. The staff was attentive, the atmosphere was relaxing, and I left feeling completely refreshed and satisfied.",
-    emoji: "✨",
-    user: "Dixit",
-    role: "Daily customer"
+    key: "1",
+    emoji: "✨"
   },
   {
-    quote: "A Truly Relaxing Experience",
-    text: "The spa services were amazing and helped me unwind after a busy week. The environment was peaceful, and every detail was thoughtfully designed for comfort and relaxation.",
-    emoji: "💎",
-    user: "Sujith",
-    role: "Highest paid customer"
+    key: "2",
+    emoji: "💎"
   },
   {
-    quote: "My Favorite Salon & Spa",
-    text: "Atharva Heaven has become my go-to destination for self-care. The quality of service, friendly staff, and excellent results keep me coming back every time.",
-    emoji: "☀️",
-    user: "Sneha",
-    role: "Weekend customer"
+    key: "3",
+    emoji: "☀️"
   }
 ];
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     if (!sectionRef.current || !stackRef.current) return;
@@ -200,7 +193,7 @@ export default function About() {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ratingTrigger.kill();
     };
   }, []);
 
@@ -208,11 +201,11 @@ export default function About() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 py-16 md:py-32 px-4 md:px-8 flex flex-col items-center justify-center text-[var(--text-primary)]"
+      className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500 py-16 md:py-32 px-4 md:px-8 flex flex-col items-center justify-center text-[var(--text-primary)] overflow-hidden"
     >
       {/* Section label on top-left of the screen */}
       <div className="absolute top-6 left-6 md:top-12 md:left-12 z-50 text-xs md:text-sm font-black uppercase tracking-[0.3em] text-[var(--text-primary)] transition-colors duration-500">
-        about us
+        {t("about.label")}
       </div>
 
       <div className="w-full max-w-[90vw] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20 relative z-10 items-center">
@@ -220,10 +213,10 @@ export default function About() {
         {/* Left: Business Description */}
         <div className="flex flex-col gap-8">
           <h2 className="text-2xl md:text-3xl font-black leading-tight uppercase tracking-tighter text-[#d2c3f6] font-11">
-            Your Journey to Relaxation Begins Here.
+            {t("about.title")}
           </h2>
           <p className="text-[18px] font-medium  tracking-[0.05em] max-w-xs leading-10 lumen-desc-gradient font-12">
-            At Atharva Heaven, we believe self-care is essential for a healthy and balanced lifestyle. Our salon and spa are designed to provide a relaxing escape where beauty, wellness, and comfort come together. With skilled professionals, premium products, and personalized treatments, we strive to deliver an exceptional experience that leaves every guest feeling refreshed, confident, and rejuvenated.
+            {t("about.desc")}
           </p>
         </div>
 
@@ -254,7 +247,7 @@ export default function About() {
               })}
             </div>
           </div>
-          <div className="mt-1 text-3xl opacity-20 animate-pulse select-none z-10 font-14">Average Rating</div>
+          <div className="mt-1 text-3xl opacity-20 animate-pulse select-none z-10 font-14">{t("about.rating")}</div>
 
 
         </div>
@@ -265,11 +258,11 @@ export default function About() {
           {/* Hand drawn hint */}
           <div className="absolute -bottom-8 -right-2 md:-bottom-20 md:-right-24 w-[160px] md:w-[320px] z-20 pointer-events-none opacity-90">
             <svg viewBox="0 0 350 250" className="w-full h-full text-[var(--text-primary)]" style={{ overflow: 'visible' }}>
-              <text x="10" y="190" fontFamily="'knewave', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 10 190)">
-                Tap or
+              <text x="10" y="190" fontFamily="'knewave', cursive" fontSize={language === 'kn' ? "20" : "36"} className="hand-draw-stroke font-bold" transform="rotate(-8 10 190)">
+                {t("about.drag").split('\n')[0]}
               </text>
-              <text x="40" y="235" fontFamily="'knewave', cursive" fontSize="44" className="hand-draw-stroke font-bold" transform="rotate(-8 40 235)">
-                drag cards
+              <text x={language === 'kn' ? "10" : "30"} y={language === 'kn' ? "220" : "235"} fontFamily="'knewave', cursive" fontSize={language === 'kn' ? "20" : "36"} className="hand-draw-stroke font-bold" transform={`rotate(-8 ${language === 'kn' ? "10 220" : "30 235"})`}>
+                {t("about.drag").split('\n')[1]}
               </text>
               {/* Thick arrow pointing UP and LEFT to the cards */}
               <path d="M 220 230 C 370 230 328 50 260 50 M 260 50 L 290 35 M 260 50 L 285 75" className="hand-draw-stroke" style={{ strokeWidth: 8, strokeLinecap: 'round', strokeLinejoin: 'round' }} />
@@ -286,16 +279,16 @@ export default function About() {
                 <div className="flex-1 space-y-6">
                   <div className="text-2xl">{review.emoji}</div>
                   <h4 className="text-2xl font-black leading-none uppercase tracking-tighter opacity-90 font-15">
-                    "{review.quote}"
+                    "{t(`review.${review.key}.quote`)}"
                   </h4>
                   <p className="text-sm font-medium opacity-60 leading-relaxed font-16">
-                    {review.text}
+                    {t(`review.${review.key}.text`)}
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-[var(--card-divider)] transition-colors duration-500">
-                  <div className="text-sm font-black opacity-90 uppercase tracking-widest">{review.user}</div>
-                  <div className="text-[10px] opacity-50 uppercase tracking-[0.2em] mt-1">{review.role}</div>
+                  <div className="text-sm font-black opacity-90 uppercase tracking-widest">{t(`review.${review.key}.user`)}</div>
+                  <div className="text-[10px] opacity-50 uppercase tracking-[0.2em] mt-1">{t(`review.${review.key}.role`)}</div>
                 </div>
               </div>
             ))}
