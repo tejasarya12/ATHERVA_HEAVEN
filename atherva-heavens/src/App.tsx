@@ -11,7 +11,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Contact from './components/Contact';
-import ObserverContainer from './components/ObserverContainer';
+import About from './components/About';
+import Footer from './components/Footer';
 import WaveTransition from './components/WaveTransition';
 
 export default function App() {
@@ -54,7 +55,8 @@ export default function App() {
       <Hero />
       <Services />
       <Contact />
-      <ObserverContainer />
+      <About />
+      <Footer />
       <WaveTransition />
       <div className="grain-overlay" />
     </main>

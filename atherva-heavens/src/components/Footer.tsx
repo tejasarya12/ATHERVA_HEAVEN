@@ -169,9 +169,9 @@ export default function Footer() {
               <h5 className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-black">Social_Connect</h5>
               <ul className="space-y-6 text-sm font-bold opacity-75 uppercase tracking-[0.2em]">
                 <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Instagram</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Twitter / X</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">LinkedIn</a></li>
-                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">YouTube</a></li>
+                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Facebook</a></li>
+                <li><a href="#" className="hover:opacity-100 transition-opacity magnetic">Mail Us</a></li>
+
               </ul>
             </div>
 

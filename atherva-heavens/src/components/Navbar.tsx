@@ -159,10 +159,10 @@ export default function Navbar() {
                       if (target && (window as any).triggerWaveTransition) {
                         (window as any).triggerWaveTransition();
                         setTimeout(() => {
-                          window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                          gsap.to(window, { scrollTo: target, duration: 0 });
                         }, 800); // 0.8s is when the wave covers the screen
                       } else if (target) {
-                        window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+                        gsap.to(window, { scrollTo: target, duration: 1, ease: 'power2.inOut' });
                       }
                     }}
                     className="group relative inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium text-white/60 transition-colors hover:text-white font-5"
@@ -181,10 +181,10 @@ export default function Navbar() {
                 if (target && (window as any).triggerWaveTransition) {
                   (window as any).triggerWaveTransition();
                   setTimeout(() => {
-                    window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                    gsap.to(window, { scrollTo: target, duration: 0 });
                   }, 800);
                 } else if (target) {
-                  window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+                  gsap.to(window, { scrollTo: target, duration: 1, ease: 'power2.inOut' });
                 }
               }}
               className="hidden md:inline-flex items-center justify-center rounded-full bg-white px-5 h-[32px] md:h-[38px] text-[10px] md:text-xs font-semibold uppercase tracking-wider text-black transition-transform hover:scale-105 font-5"
@@ -225,12 +225,12 @@ export default function Navbar() {
                     setTimeout(() => {
                       (window as any).triggerWaveTransition();
                       setTimeout(() => {
-                        window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                        gsap.to(window, { scrollTo: target, duration: 0 });
                       }, 800);
                     }, 800); // Wait for menu to close
                   } else if (target) {
                     setTimeout(() => {
-                      target.scrollIntoView({ behavior: 'smooth' });
+                      gsap.to(window, { scrollTo: target, duration: 1, ease: 'power2.inOut' });
                     }, 800);
                   }
                 }}
@@ -251,12 +251,12 @@ export default function Navbar() {
                   setTimeout(() => {
                     (window as any).triggerWaveTransition();
                     setTimeout(() => {
-                      window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+                      gsap.to(window, { scrollTo: target, duration: 0 });
                     }, 800);
                   }, 800);
                 } else if (target) {
                   setTimeout(() => {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    gsap.to(window, { scrollTo: target, duration: 1, ease: 'power2.inOut' });
                   }, 800);
                 }
               }}
