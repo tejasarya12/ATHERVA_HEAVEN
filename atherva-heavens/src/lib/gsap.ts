@@ -5,7 +5,7 @@ import { Observer } from 'gsap/Observer';
 import { CustomEase } from 'gsap/CustomEase';
 import { Draggable } from 'gsap/Draggable';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrambleTextPlugin } from 'gsap-trial/ScrambleTextPlugin';
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 
 gsap.registerPlugin(ScrollTrigger, Flip, Observer, CustomEase, Draggable, ScrollToPlugin, ScrambleTextPlugin);
 
