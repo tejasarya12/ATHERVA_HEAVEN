@@ -184,7 +184,11 @@ export default function Services() {
                 muted
                 loop
                 playsInline
-                preload="none"
+                preload="auto"
+                onCanPlay={(e) => {
+                  const vid = e.target as HTMLVideoElement;
+                  vid.playbackRate = 0.5;
+                }}
                 className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s] ease-out opacity-100"
               >
                 <source src={service.video} type="video/mp4" />

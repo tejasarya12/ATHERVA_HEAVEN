@@ -14,6 +14,7 @@ export default function Hero() {
   const leftDoorRef = useRef<HTMLDivElement>(null);
   const rightDoorRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const loadingOverlayRef = useRef<HTMLDivElement>(null);
 
   const [loaded, setLoaded] = useState(0);
   const totalFrames = 74;
@@ -98,6 +99,26 @@ export default function Hero() {
     if (loaded < 100) return;
     if (!sectionRef.current || !containerRef.current || !leftDoorRef.current || !rightDoorRef.current || !textRef.current || !canvasLeftRef.current) return;
 
+    // Loading Screen Circular Reveal
+    if (loadingOverlayRef.current) {
+      const proxy = { size: 0 };
+      gsap.to(proxy, {
+        size: 150,
+        duration: 3.0,
+        ease: "bounce.inOut",
+        onUpdate: () => {
+          if (!loadingOverlayRef.current) return;
+          loadingOverlayRef.current.style.maskImage = `radial-gradient(circle at 50% 50%, transparent ${proxy.size}%, black ${proxy.size}%)`;
+          loadingOverlayRef.current.style.webkitMaskImage = `radial-gradient(circle at 50% 50%, transparent ${proxy.size}%, black ${proxy.size}%)`;
+        },
+        onComplete: () => {
+          if (loadingOverlayRef.current) {
+            loadingOverlayRef.current.style.display = 'none';
+          }
+        }
+      });
+    }
+
     // Initial draw
     drawFrame(0);
 
@@ -170,18 +191,16 @@ export default function Hero() {
       className="relative h-screen w-full overflow-hidden bg-transparent z-[60]"
     >
       {/* Loading Overlay */}
-      {loaded < 100 && (
-        <div className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-black">
-          <div className="text-white/50 text-sm tracking-[0.3em] font-mono mb-4 uppercase">WELCOME TO ATHARVA HEAVEN</div>
-          <div className="w-64 h-[1px] bg-white/10 relative overflow-hidden">
-            <div
-              className="absolute top-0 left-0 h-full bg-white transition-all duration-300"
-              style={{ width: `${loaded}%` }}
-            />
-          </div>
-          <div className="text-white mt-4 text-xs font-mono">{loaded}%</div>
+      <div ref={loadingOverlayRef} className="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#d2c3f6]">
+        <div className="text-black/50 text-sm tracking-[0.3em] font-mono mb-4 uppercase">WELCOME TO ATHARVA HEAVEN</div>
+        <div className="w-64 h-[1px] bg-black/10 relative overflow-hidden">
+          <div
+            className="absolute top-0 left-0 h-full bg-black transition-all duration-300"
+            style={{ width: `${loaded}%` }}
+          />
         </div>
-      )}
+        <div className="text-black mt-4 text-xs font-mono">{loaded}%</div>
+      </div>
 
       {/* Door Layers holding the split canvas */}
       <div ref={containerRef} className="absolute inset-0 z-20 flex pointer-events-none will-change-transform">
