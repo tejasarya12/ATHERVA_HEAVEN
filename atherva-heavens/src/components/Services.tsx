@@ -9,19 +9,19 @@ import gsap, { ScrollTrigger } from '@/lib/gsap';
 const SERVICES = [
   {
     id: 'Jacuzzi',
-    title: 'Ultimate Hydro Relaxation :',
+    title: 'Ultimate Hydro Relaxation',
     description: 'Enjoy a soothing soak in our Jacuzzi tub, where warm water and gentle jets help relax muscles, improve circulation, and melt away daily stress.',
     video: '/videos/service_2.mp4'
   },
   {
     id: 'Steam Room',
-    title: 'Pure Steam Therapy :',
+    title: 'Pure Steam Therapy',
     description: 'Relax in a warm steam-filled environment that helps open pores, cleanse the skin, and promote overall well-being. The soothing heat helps reduce stress and leaves you feeling refreshed.',
     video: '/videos/service_1.mp4'
   },
   {
     id: 'Wine Massage',
-    title: 'Luxurious Wine Therapy :',
+    title: 'Luxurious Wine Therapy',
     description: 'Our wine massage combines soothing massage techniques with antioxidant-rich ingredients to help improve skin texture, reduce stress, and leave you feeling refreshed.',
     video: '/videos/service_3.mp4'
   }
